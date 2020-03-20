@@ -4,7 +4,7 @@
 Masuk ke Directory ``android/app``
 
 ```
-$ keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+keytool -genkeypair -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
 ```
 Perintah ini meminta Anda untuk kata sandi untuk keystore dan kunci dan untuk bidang Nama Dibedakan untuk kunci Anda. Itu kemudian menghasilkan keystore sebagai file bernama my-upload-key.keystore.
 

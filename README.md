@@ -26,7 +26,8 @@ Langkah konfigurasi terakhir yang perlu dilakukan adalah mengatur ``rilis build`
 android {
     ...
     defaultConfig { ... }
-    signingConfigs { //Tambahkan Ini
+    signingConfigs {
+    ...
         release { //Tambahkan Ini
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) { //Tambahkan Ini
                 storeFile file(MYAPP_UPLOAD_STORE_FILE) //Tambahkan Ini
@@ -35,10 +36,11 @@ android {
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD //Tambahkan Ini
             } //Tambahkan Ini
         } //Tambahkan Ini
-    } //Tambahkan Ini
+    } 
     buildTypes {
         release {
             ...
+            //komen ini  // signingConfig signingConfigs.debug
             signingConfig signingConfigs.release //Tambahkan Ini
         }
     }

@@ -43,9 +43,9 @@ class LupaPassword extends React.Component {
                     transparent={true}
                     visible={this.state.modal}
                 >
-                    <View style={[styles.container, { alignItems: 'center', justifyContent: 'center', backgroundColor: 'transparent' }]}>
+                    <View style={[styles.container, { alignItems: 'center', justifyContent: 'center', backgroundColor: 'transparent', borderRadius: 4}]}>
                         <View style={styles.modalContainer}>
-                            <Text style={{textAlign:'center'}}> Sebuah email telah dikirimkan ke <Text style={{ fontWeight: 'bold' }}>{this.state.email}</Text></Text>
+                            <Text style={{ textAlign: 'center', fontSize:15 }}> {this.state.email === 'contoh@gmail.com' ? <Text>Sebuah email telah dikirimkan ke <Text style={{ fontWeight: 'bold' }}>{this.state.email}</Text></Text> : <Text>Email tersebut <Text style={{ fontWeight: 'bold' }}>tidak terdaftar</Text>di dalam sistem</Text>} </Text>
                             <TouchableOpacity onPress={() => this.setState({ modal: !this.state.modal })} style={styles.btnModalClose}>
                                 <Icon name='close' size={27} color='white' />
                             </TouchableOpacity>

@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    TextInput,
-    Button,
-    TouchableOpacity,
-    Image,
-    Alert
 } from 'react-native';
 
 import { styles } from './styles'

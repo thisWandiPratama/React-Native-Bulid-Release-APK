@@ -8,14 +8,14 @@ export const styles = StyleSheet.create({
     header:{
         height: '25%',
         backgroundColor:'#2496F3',
-        borderBottomLeftRadius:30,
-        borderBottomRightRadius:30,
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20,
     },
     boxTitle : {
         flexDirection : 'row',
         height:40,
         justifyContent:'space-between',
-        marginTop: 30,
+        marginTop: 10,
         alignItems: 'center',
         paddingLeft: 10,
         paddingRight: 10

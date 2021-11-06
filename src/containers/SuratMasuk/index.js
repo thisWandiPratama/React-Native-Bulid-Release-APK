@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, Image } from 'react-native'
+import { View, Text, TextInput, Image, ScrollView, Touchable, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -9,46 +9,59 @@ class SuratMasuk extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            tagMenteri: false,
+            tagTerbaru: true,
+            tagDiTandai: false,
             content: [
                 {
                     id: 188,
                     label: 'Penting',
-                    title : 'GUBERNUR SULAWESI BARAT',
-                    NoSeri : '001/DARURAT -SB/1/2021',
-                    date : '14/08/2021',
-                    tandai : false
+                    title: 'GUBERNUR SULAWESI BARAT',
+                    NoSeri: '001/DARURAT -SB/1/2021',
+                    date: '14/08/2021',
+                    tagTandai: false,
+                    tagMenteri: false,
+                    tagTerbaru: true,
                 },
                 {
                     id: 179,
                     label: 'Rahasia',
-                    title : 'FARID SR & PARTNERS',
-                    NoSeri : '135/FSRP-P/1/2021',
-                    date : '17/07/2021',
-                    tandai : true
+                    title: 'FARID SR & PARTNERS',
+                    NoSeri: '135/FSRP-P/1/2021',
+                    date: '17/07/2021',
+                    tagTandai: true,
+                    tagMenteri: false,
+                    tagTerbaru: true,
                 },
                 {
                     id: 165,
                     label: 'Biasa',
-                    title : 'RAPIMNAS FORUM PSAA LKSA',
-                    NoSeri : '066/FN.PSAA/XII/2020',
-                    date : '17/06/2021',
-                    tandai : false
+                    title: 'RAPIMNAS FORUM PSAA LKSA',
+                    NoSeri: '066/FN.PSAA/XII/2020',
+                    date: '17/06/2021',
+                    tagTandai: false,
+                    tagMenteri: false,
+                    tagTerbaru: true,
                 },
                 {
                     id: 161,
                     label: 'Segera',
-                    title : 'YAYASAN LENTERA ANAK(LENTER..',
-                    NoSeri : '002/YLA/26-02/1/2021',
-                    date : '14/05/2021',
-                    tandai : false
+                    title: 'YAYASAN LENTERA ANAK(LENTER..',
+                    NoSeri: '002/YLA/26-02/1/2021',
+                    date: '14/05/2021',
+                    tagTandai: true,
+                    tagMenteri: false,
+                    tagTerbaru: true,
                 },
                 {
                     id: 138,
                     label: 'Penting',
-                    title : 'GUBERNUR SULAWESI BARAT',
-                    NoSeri : '001/DARURAT -SB/1/2021',
-                    date : '14/08/2021',
-                    tandai : false
+                    title: 'GUBERNUR SULAWESI BARAT',
+                    NoSeri: '001/DARURAT -SB/1/2021',
+                    date: '14/08/2021',
+                    tagTandai: true,
+                    tagMenteri: true,
+                    tagTerbaru: true,
                 },
             ]
         }
@@ -56,45 +69,94 @@ class SuratMasuk extends React.Component {
 
     renderContent = () => {
         return this.state.content.map((value, index) => {
-            return (
-                <View style={{
-                    height: 85,
-                    width: '100%',
-                    borderBottomWidth: 2,
-                    borderBottomColor: '#E7EAEF',
-                    flexDirection: 'row'
-                }}>
-                    <View style={{ width: 60, height: 85, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>{value.id}</Text>
-                    </View>
-                    <View
-                        style={{
-                            height: 85,
-                            width: 212,
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <Text style={{
-                            fontSize: 15,
-                            color: '#000',
-                            fontWeight: 'bold'
-                        }}>{value.label}</Text>
-                        <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>{value.title}</Text>
-                        <Text style={{ fontSize: 15, color: '#80878E' }}>{value.NoSeri}</Text>
-                    </View>
-                    <View style={{
-                        alignItems: 'center',
-                        justifyContent: 'center'
+            if(this.state.tagMenteri===value.tagMenteri && this.state.tagTerbaru===value.tagTerbaru){
+                return (
+                    <View key={index} style={{
+                        height: 85,
+                        width: '100%',
+                        borderBottomWidth: 2,
+                        borderBottomColor: '#E7EAEF',
+                        flexDirection: 'row'
                     }}>
-                        <Text style={{
-                            paddingBottom: 10
-                        }}>{value.date}</Text>
-                        <View>
-                            <Icon name='push-pin' size={35} color='#727982' />
+                        <View style={{ width: 60, height: 85, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>{value.id}</Text>
+                        </View>
+                        <View
+                            style={{
+                                height: 85,
+                                width: 212,
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <Text style={{
+                                fontSize: 15,
+                                color: '#000',
+                                fontWeight: 'bold'
+                            }}>{value.label}</Text>
+                            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>{value.title}</Text>
+                            <Text style={{ fontSize: 15, color: '#80878E' }}>{value.NoSeri}</Text>
+                        </View>
+                        <View style={{
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <Text style={{
+                                paddingBottom: 10
+                            }}>{value.date}</Text>
+                            {value.tandai === true ?
+                                <Image source={{ uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png' }} style={{ height: 25, width: 25 }} />
+                                :
+                                <Image source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }} style={{ height: 25, width: 25 }} />
+                            }
                         </View>
                     </View>
-                </View>
-            )
+                )
+            // }else if(this.state.tagTerbaru===value.tagTerbaru){
+            //     return (
+            //         <View>
+            //             <Text>baru</Text>
+            //         </View>
+                    // <View key={index} style={{
+                    //     height: 85,
+                    //     width: '100%',
+                    //     borderBottomWidth: 2,
+                    //     borderBottomColor: '#E7EAEF',
+                    //     flexDirection: 'row'
+                    // }}>
+                    //     <View style={{ width: 60, height: 85, alignItems: 'center', justifyContent: 'center' }}>
+                    //         <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>{value.id}</Text>
+                    //     </View>
+                    //     <View
+                    //         style={{
+                    //             height: 85,
+                    //             width: 212,
+                    //             justifyContent: 'center',
+                    //         }}
+                    //     >
+                    //         <Text style={{
+                    //             fontSize: 15,
+                    //             color: '#000',
+                    //             fontWeight: 'bold'
+                    //         }}>{value.label}</Text>
+                    //         <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>{value.title}</Text>
+                    //         <Text style={{ fontSize: 15, color: '#80878E' }}>{value.NoSeri}</Text>
+                    //     </View>
+                    //     <View style={{
+                    //         alignItems: 'center',
+                    //         justifyContent: 'center'
+                    //     }}>
+                    //         <Text style={{
+                    //             paddingBottom: 10
+                    //         }}>{value.date}</Text>
+                    //         {value.tandai === true ?
+                    //             <Image source={{ uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png' }} style={{ height: 25, width: 25 }} />
+                    //             :
+                    //             <Image source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }} style={{ height: 25, width: 25 }} />
+                    //         }
+                    //     </View>
+                    // </View>
+                // )
+            }
         })
     }
 
@@ -122,12 +184,12 @@ class SuratMasuk extends React.Component {
                 </View>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <View style={styles.boxTag}>
-                        <View style={styles.listTag}>
-                            <Text style={{ fontSize: 11, color: '#000' }}>Tag Meteri</Text>
-                        </View>
-                        <View style={styles.listTag}>
-                            <Text style={{ fontSize: 11, color: '#000' }}>Terbaru</Text>
-                        </View>
+                        <TouchableOpacity onPress={() => this.setState({tagMenteri:!this.state.tagMenteri})} style={[styles.listTag,{backgroundColor: this.state.tagMenteri===true ? 'red' : 'transparent'}]}>
+                            <Text style={{ fontSize: 11, color:  this.state.tagMenteri===true ? 'white' : '#000', fontWeight:'bold' }}>Tag Meteri</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.listTag,{backgroundColor:this.state.tagTerbaru===true ? 'red' : 'transparent'}]}>
+                            <Text style={{ fontSize: 11, color:  this.state.tagTerbaru===true ? 'white' : '#000', fontWeight:'bold' }}>Terbaru</Text>
+                        </TouchableOpacity>
                         <View style={styles.listTag}>
                             <Text style={{ fontSize: 11, color: '#000' }}>Telah ditandai</Text>
                         </View>
@@ -156,8 +218,9 @@ class SuratMasuk extends React.Component {
                 <View style={{
                     flex: 1,
                 }}>
-                    <Scroo
-                    {this.renderContent()}
+                    <ScrollView>
+                        {this.renderContent()}
+                    </ScrollView>
                 </View>
             </View>
         )

@@ -11,6 +11,7 @@ import DrafSuratKeluar from '../containers/DrafSuratKeluar'
 import SuratKeluar from '../containers/SuratKeluar'
 
 import DetailSuratMasuk from '../containers/SuratMasuk/DetailSuratMasuk';
+import DetailDisposisi from '../containers/Disposisi/DetailDisposisi';
 
 import Notifikasi from '../containers/SuratMasuk/Notifikasi';
 
@@ -64,6 +65,7 @@ const HomeRouter = () => {
         <StackTab.Navigator screenOptions={{ headerShown: false }}  >
             <StackTab.Screen name="TabHome" component={TabHome} />
             <StackTab.Screen name="DetailSuratMasuk" component={DetailSuratMasuk} />
+            <StackTab.Screen name="DetailDisposisi" component={DetailDisposisi} />
             <StackTab.Screen name="Notifikasi" component={Notifikasi} />
         </StackTab.Navigator>
     )

@@ -19,7 +19,7 @@ class LupaPassword extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Header onpress={this.back} title='Lupa Password' />
+                <Header onpress={this.back} title='Lupa Password' backgroundColor='#2496F3' />
                 <View style={styles.content}>
                     <Text style={styles.title1}>Temukan akun anda</Text>
                     <View style={{ width: '80%', alignItems: 'center', justifyContent: 'center' }}>

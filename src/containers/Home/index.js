@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     Text,
+    TouchableOpacity,
     View,
 } from 'react-native';
 
@@ -24,8 +25,15 @@ export default class LoginView extends Component {
                         <Text style={styles.titleHeader}>Dashboard</Text>
                         <View style={styles.boxIconTitle}>
                             <Icon name='help' size={25} color='white' />
-                            <Icon name='notifications' size={25} color='white' />
-                            <View style={styles.customBadge} />
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('Notifikasi', {
+                                tagDiskusi: true,
+                                tagSuratMasuk: false,
+                                tagSuratKeluar: false,
+                                tagSuratCC: false,
+                            })} >
+                                <Icon name='notifications' size={25} color='white' />
+                                <View style={styles.customBadge} />
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.labelName}>
@@ -41,17 +49,17 @@ export default class LoginView extends Component {
                             <Text style={styles.countTitle}>Surat Masuk</Text>
                         </View>
 
-                        <View style={[styles.boxContent,{backgroundColor:'#68B3C8'}]}>
+                        <View style={[styles.boxContent, { backgroundColor: '#68B3C8' }]}>
                             <Icon name="assignment-ind" size={70} color="white" />
                             <Text style={styles.count}>116</Text>
                             <Text style={styles.countTitle}>Disposisi</Text>
                         </View>
-                        <View style={[styles.boxContent, { marginRight: 40, backgroundColor:'#EB5F3C'}]}>
+                        <View style={[styles.boxContent, { marginRight: 40, backgroundColor: '#EB5F3C' }]}>
                             <Icon name="mail" size={70} color="white" />
                             <Text style={styles.count}>5</Text>
                             <Text style={styles.countTitle}>Surat Keluar</Text>
                         </View>
-                        <View style={[styles.boxContent,{backgroundColor: '#F3BA46',}]}>
+                        <View style={[styles.boxContent, { backgroundColor: '#F3BA46', }]}>
                             <Icon name="drafts" size={70} color="white" />
                             <Text style={styles.count}>18</Text>
                             <Text style={styles.countTitle}> Draft Surat Keluar</Text>

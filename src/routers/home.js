@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
@@ -9,10 +10,14 @@ import Disposisi from '../containers/Disposisi'
 import DrafSuratKeluar from '../containers/DrafSuratKeluar'
 import SuratKeluar from '../containers/SuratKeluar'
 
+import DetailSuratMasuk from '../containers/SuratMasuk/DetailSuratMasuk';
+
+import Notifikasi from '../containers/SuratMasuk/Notifikasi';
 
 const Tab = createBottomTabNavigator();
+const StackTab = createNativeStackNavigator();
 
-function HomeRouter() {
+const TabHome = () => {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -53,5 +58,16 @@ function HomeRouter() {
         </Tab.Navigator>
     );
 }
+
+const HomeRouter = () => {
+    return (
+        <StackTab.Navigator screenOptions={{ headerShown: false }}  >
+            <StackTab.Screen name="TabHome" component={TabHome} />
+            <StackTab.Screen name="DetailSuratMasuk" component={DetailSuratMasuk} />
+            <StackTab.Screen name="Notifikasi" component={Notifikasi} />
+        </StackTab.Navigator>
+    )
+}
+
 
 export default HomeRouter;

@@ -273,16 +273,16 @@ class Disposisi extends React.Component {
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <View style={styles.boxTag}>
                         <TouchableOpacity onPress={() => this.setState({ tagMenteri: !this.state.tagMenteri })} style={[styles.listTag, { backgroundColor: this.state.tagMenteri === true ? '#68B3C8' : 'transparent' }]}>
-                            <Text style={{ fontSize: 11, color: this.state.tagMenteri === true ? 'white' : '#000', fontWeight: 'bold' }}>Tag Meteri</Text>
+                            <Text style={{ fontSize: 11, color: this.state.tagMenteri === true ? 'white' : '#68B3C8', fontWeight: 'bold' }}>Tag Meteri</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.listTag, { backgroundColor: this.state.tagTerbaru === true ? '#68B3C8' : 'transparent' }]}>
-                            <Text style={{ fontSize: 11, color: this.state.tagTerbaru === true ? 'white' : '#000', fontWeight: 'bold' }}>Terbaru</Text>
+                            <Text style={{ fontSize: 11, color: this.state.tagTerbaru === true ? 'white' : '#68B3C8', fontWeight: 'bold' }}>Terbaru</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.setState({ tagDiTandai: !this.state.tagDiTandai })} style={[styles.listTag, { backgroundColor: this.state.tagDiTandai === true ? '#68B3C8' : 'transparent' }]}>
-                            <Text style={{ fontSize: 11, color: this.state.tagDiTandai === true ? 'white' : '#000', fontWeight: 'bold' }}>Telah ditandai</Text>
+                            <Text style={{ fontSize: 11, color: this.state.tagDiTandai === true ? 'white' : '#68B3C8', fontWeight: 'bold' }}>Telah ditandai</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.setState({ modalVisible: !this.state.modalVisible })} style={[styles.listTag, { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }]}>
-                            <Text style={{ fontSize: 11, color: '#000' }}>Filter</Text>
+                            <Text style={{ fontSize: 11, color: '#68B3C8' }}>Filter</Text>
                             <View style={{
                                 height: 18,
                                 width: 18,
@@ -332,7 +332,7 @@ class Disposisi extends React.Component {
                     transparent={true}
                     visible={this.state.modalVisible}
                     onRequestClose={() => {
-                        this.setModalVisible(!this.state.modalVisible);
+                        this.setState({modalVisible:!this.state.modalVisible});
                     }}
                 >
                     <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)' }}>
@@ -381,7 +381,7 @@ class Disposisi extends React.Component {
                                     }}
                                 >Urutkan</Text>
                                 <TouchableOpacity style={[styles.listTag, { backgroundColor: this.state.tagTerbaru === true ? '#68B3C8' : 'transparent', marginLeft: 0, marginTop: 5 }]}>
-                                    <Text style={{ fontSize: 11, color: this.state.tagTerbaru === true ? 'white' : '#000', fontWeight: 'bold' }}>Terbaru</Text>
+                                    <Text style={{ fontSize: 11, color: this.state.tagTerbaru === true ? 'white' : '#68B3C8', fontWeight: 'bold' }}>Terbaru</Text>
                                 </TouchableOpacity>
                                 <Text
                                     style={{

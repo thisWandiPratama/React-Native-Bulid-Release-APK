@@ -251,21 +251,21 @@ class SuratMasuk extends React.Component {
                 </View>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <View style={styles.boxTag}>
-                        <TouchableOpacity onPress={() => this.setState({ tagMenteri: !this.state.tagMenteri })} style={[styles.listTag, { backgroundColor: this.state.tagMenteri === true ? 'red' : 'transparent' }]}>
-                            <Text style={{ fontSize: 11, color: this.state.tagMenteri === true ? 'white' : '#000', fontWeight: 'bold' }}>Tag Meteri</Text>
+                        <TouchableOpacity onPress={() => this.setState({ tagMenteri: !this.state.tagMenteri })} style={[styles.listTag, { backgroundColor: this.state.tagMenteri === true ? '#C33831' : 'transparent' }]}>
+                            <Text style={{ fontSize: 11, color: this.state.tagMenteri === true ? 'white' : '#C33831', fontWeight: 'bold' }}>Tag Meteri</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.listTag, { backgroundColor: this.state.tagTerbaru === true ? 'red' : 'transparent' }]}>
-                            <Text style={{ fontSize: 11, color: this.state.tagTerbaru === true ? 'white' : '#000', fontWeight: 'bold' }}>Terbaru</Text>
+                        <TouchableOpacity style={[styles.listTag, { backgroundColor: this.state.tagTerbaru === true ? '#C33831' : 'transparent' }]}>
+                            <Text style={{ fontSize: 11, color: this.state.tagTerbaru === true ? 'white' : '#C33831', fontWeight: 'bold' }}>Terbaru</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.setState({ tagDiTandai: !this.state.tagDiTandai })} style={[styles.listTag, { backgroundColor: this.state.tagDiTandai === true ? 'red' : 'transparent' }]}>
-                            <Text style={{ fontSize: 11, color: this.state.tagDiTandai === true ? 'white' : '#000', fontWeight: 'bold' }}>Telah ditandai</Text>
+                        <TouchableOpacity onPress={() => this.setState({ tagDiTandai: !this.state.tagDiTandai })} style={[styles.listTag, { backgroundColor: this.state.tagDiTandai === true ? '#C33831' : 'transparent' }]}>
+                            <Text style={{ fontSize: 11, color: this.state.tagDiTandai === true ? 'white' : '#C33831', fontWeight: 'bold' }}>Telah ditandai</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => this.setState({ modalVisible: !this.state.modalVisible })} style={[styles.listTag, { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }]}>
-                            <Text style={{ fontSize: 11, color: '#000' }}>Filter</Text>
+                            <Text style={{ fontSize: 11, color: '#C33831' }}>Filter</Text>
                             <View style={{
                                 height: 18,
                                 width: 18,
-                                backgroundColor: 'red',
+                                backgroundColor: '#C33831',
                                 marginLeft: 7,
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -291,7 +291,7 @@ class SuratMasuk extends React.Component {
                         borderBottomWidth: 2,
                     }}>
                         <TextInput
-                            placeholder='Search'
+                            placeholder='Cari Surat Masuk'
                             style={{ paddingLeft: 50 }}
                         />
                         <View style={{ paddingRight: 15 }}>
@@ -311,7 +311,7 @@ class SuratMasuk extends React.Component {
                     transparent={true}
                     visible={this.state.modalVisible}
                     onRequestClose={() => {
-                        this.setModalVisible(!this.state.modalVisible);
+                        this.setState({modalVisible:!this.state.modalVisible});
                     }}
                 >
                     <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)' }}>
@@ -359,7 +359,7 @@ class SuratMasuk extends React.Component {
                                         paddingTop: 20
                                     }}
                                 >Urutkan</Text>
-                                <TouchableOpacity style={[styles.listTag, { backgroundColor: this.state.tagTerbaru === true ? 'red' : 'transparent', marginLeft: 0, marginTop: 5 }]}>
+                                <TouchableOpacity style={[styles.listTag, { backgroundColor: this.state.tagTerbaru === true ? '#C33831' : 'transparent', marginLeft: 0, marginTop: 5 }]}>
                                     <Text style={{ fontSize: 11, color: this.state.tagTerbaru === true ? 'white' : '#000', fontWeight: 'bold' }}>Terbaru</Text>
                                 </TouchableOpacity>
                                 <Text
@@ -376,10 +376,10 @@ class SuratMasuk extends React.Component {
                                     }}
                                 >
                                     <TouchableOpacity onPress={() => this.setState({ tagDiTandai: !this.state.tagDiTandai })} style={[styles.listTag, { backgroundColor: this.state.tagDiTandai === true ? 'red' : 'transparent' }]}>
-                                        <Text style={{ fontSize: 11, color: this.state.tagDiTandai === true ? 'white' : 'red', fontWeight: 'bold' }}>Telah ditandai</Text>
+                                        <Text style={{ fontSize: 11, color: this.state.tagDiTandai === true ? 'white' : '#C33831', fontWeight: 'bold' }}>Telah ditandai</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.setState({ tagMenteri: !this.state.tagMenteri })} style={[styles.listTag, { backgroundColor: this.state.tagMenteri === true ? 'red' : 'transparent' }]}>
-                                        <Text style={{ fontSize: 11, color: this.state.tagMenteri === true ? 'white' : 'red', fontWeight: 'bold' }}>Tag Meteri</Text>
+                                    <TouchableOpacity onPress={() => this.setState({ tagMenteri: !this.state.tagMenteri })} style={[styles.listTag, { backgroundColor: this.state.tagMenteri === true ? '#C33831' : 'transparent' }]}>
+                                        <Text style={{ fontSize: 11, color: this.state.tagMenteri === true ? 'white' : '#C33831', fontWeight: 'bold' }}>Tag Meteri</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <Text
@@ -398,22 +398,22 @@ class SuratMasuk extends React.Component {
                                     }}
                                 >
                                     <TouchableOpacity style={[styles.listTag, { width: 50 }]}>
-                                        <Text style={{ fontSize: 11, color: 'red', fontWeight: 'bold' }}>Penting</Text>
+                                        <Text style={{ fontSize: 11, color: '#C33831', fontWeight: 'bold' }}>Penting</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={[styles.listTag, { width: 40 }]}>
-                                        <Text style={{ fontSize: 11, color: 'red', fontWeight: 'bold' }}>Biasa</Text>
+                                        <Text style={{ fontSize: 11, color: '#C33831', fontWeight: 'bold' }}>Biasa</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={[styles.listTag, { width: 45 }]}>
-                                        <Text style={{ fontSize: 11, color: 'red', fontWeight: 'bold' }}>Segera</Text>
+                                        <Text style={{ fontSize: 11, color: '#C33831', fontWeight: 'bold' }}>Segera</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={[styles.listTag, { width: 50 }]}>
-                                        <Text style={{ fontSize: 11, color: 'red', fontWeight: 'bold' }}>Rahasia</Text>
+                                        <Text style={{ fontSize: 11, color: '#C33831', fontWeight: 'bold' }}>Rahasia</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={[styles.listTag, { width: 100 }]}>
-                                        <Text style={{ fontSize: 11, color: 'red', fontWeight: 'bold' }}>Sangat Rahasia</Text>
+                                        <Text style={{ fontSize: 11, color: '#C33831', fontWeight: 'bold' }}>Sangat Rahasia</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={[styles.listTag, { width: 60 }]}>
-                                        <Text style={{ fontSize: 11, color: 'red', fontWeight: 'bold' }}>Terbatas</Text>
+                                        <Text style={{ fontSize: 11, color: '#C33831', fontWeight: 'bold' }}>Terbatas</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <Text

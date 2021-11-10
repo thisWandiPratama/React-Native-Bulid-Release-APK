@@ -90,7 +90,7 @@ export const styles = StyleSheet.create({
         justifyContent:'center',
         borderRadius:8,
         borderWidth:2,
-        borderColor:'red',
+        borderColor:'#C33831',
         margin:5
     }
 

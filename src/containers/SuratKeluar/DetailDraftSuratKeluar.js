@@ -1,17 +1,20 @@
 import React from "react";
-import { View, Text, Dimensions, TouchableOpacity, ScrollView, Image } from 'react-native'
+import { View, Text, Dimensions, TouchableOpacity, ScrollView, Image, Modal } from 'react-native'
 import Header from '../../components/header'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { styles } from './styles'
 
 
-class DetailSuratMasuk extends React.Component {
+class DetailSuratKeluar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             tabDetailSurat: true,
-            tabLihatSurat: false,
-            tabSiklus: false,
-            ttileHeader: ''
+            tabFileSurat: false,
+            tabTujuanSurat: false,
+            ttileHeader: '',
+            modalVisible: false,
+            parafrase: true
         }
     }
 
@@ -19,12 +22,11 @@ class DetailSuratMasuk extends React.Component {
 
     componentDidMount() {
         const { nosuratmasuk } = this.props.route.params
-        this.setState({ ttileHeader: `Detail Surat Masuk ${nosuratmasuk}` })
+        this.setState({ ttileHeader: `Detail Surat Keluar ${nosuratmasuk}` })
     }
 
     renderContent = () => {
         if (this.state.tabDetailSurat === true) {
-            console.log('detail')
             return (
                 <View style={{
                     margin: 10,
@@ -57,7 +59,82 @@ class DetailSuratMasuk extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        11 Agustus 2021
+                        21 Agustus 2021
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            paddingTop: 10
+                        }}
+                    >No. Agenda</Text>
+                    <Text style={{
+                        paddingBottom: 10,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#DCDDE1'
+                    }}>
+                        374
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            paddingTop: 10
+                        }}
+                    >Asal Surat</Text>
+                    <Text style={{
+                        paddingBottom: 10,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#DCDDE1'
+                    }}>
+                        ASPIRASI AHLI MUDA 1
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            paddingTop: 10
+                        }}
+                    >Perihal</Text>
+                    <Text style={{
+                        paddingBottom: 10,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#DCDDE1'
+                    }}>
+                        test
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            paddingTop: 10
+                        }}
+                    >Lampiran</Text>
+                    <Text style={{
+                        paddingBottom: 10,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#DCDDE1'
+                    }}>
+                        -
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            paddingTop: 10
+                        }}
+                    >Jenis Surat</Text>
+                    <Text style={{
+                        paddingBottom: 10,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#DCDDE1'
+                    }}>
+                        Nota Dinas
                     </Text>
                     <Text
                         style={{
@@ -81,73 +158,13 @@ class DetailSuratMasuk extends React.Component {
                             color: '#000',
                             paddingTop: 10
                         }}
-                    >Asal Surat</Text>
-                    <Text style={{
-                        paddingBottom: 10,
-                        borderBottomWidth: 1,
-                        borderBottomColor: '#DCDDE1'
-                    }}>
-                        ANALIS KEPEGAWAIAN AHLI MUDA 5
-                    </Text>
-                    <Text
-                        style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            paddingTop: 10
-                        }}
-                    >Tanggal Diterima</Text>
-                    <Text style={{
-                        paddingBottom: 10,
-                        borderBottomWidth: 1,
-                        borderBottomColor: '#DCDDE1'
-                    }}>
-                        11 Agustus 2021 10:32
-                    </Text>
-                    <Text
-                        style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            paddingTop: 10
-                        }}
-                    >Status Surat</Text>
-                    <Text style={{
-                        paddingBottom: 10,
-                        borderBottomWidth: 1,
-                        borderBottomColor: '#DCDDE1'
-                    }}>
-                        BARU
-                    </Text>
-                    <Text
-                        style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            paddingTop: 10
-                        }}
-                    >Perihal</Text>
-                    <Text style={{
-                        paddingBottom: 10,
-                        borderBottomWidth: 1,
-                        borderBottomColor: '#DCDDE1'
-                    }}>
-                        Demo
-                    </Text>
-                    <Text
-                        style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            paddingTop: 10
-                        }}
                     >Klassifikasi Surat</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        PR.01.04 Musyawarah Perencanaan Pemmbagunan Nasional (Musrenbang)
+                        PR.01.03 Rencana Strategis(Renstra)
                     </Text>
                     <Text
                         style={{
@@ -156,32 +173,52 @@ class DetailSuratMasuk extends React.Component {
                             color: '#000',
                             paddingTop: 10
                         }}
-                    >Jenis Surat</Text>
+                    >Status</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        Surat Undangan
-                    </Text>
-                    <Text
-                        style={{
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            color: '#000',
-                            paddingTop: 10
-                        }}
-                    >No. Agenda</Text>
-                    <Text style={{
-                        paddingBottom: 10,
-                        borderBottomWidth: 1,
-                        borderBottomColor: '#DCDDE1'
-                    }}>
-                        299
+                        Ditutup
                     </Text>
                 </View>
             )
-        } else if (this.state.tabLihatSurat === true) {
+        } else if (this.state.tabTujuanSurat === true) {
+            return (
+                <View style={{
+                    margin: 10,
+                    marginTop: 15
+                }}>
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                        }}
+                    >Tujuan Internal</Text>
+                    <View
+                    style={{
+                       flexDirection:'row' 
+                    }}
+                    >
+                        <Text
+                            style={{
+                                color: '#000'
+                            }}
+                        >1. </Text>
+                        <Text
+                            style={{
+                                paddingBottom: 10,
+                                borderBottomWidth: 1,
+                                borderBottomColor: '#DCDDE1'
+                            }}
+                        >
+                           DEPUTIH BIDANG PERLINDUNGAN KHUSUS ANAK 1965345647235353
+                        </Text>
+                    </View>
+                </View>
+            )
+        } else {
             return (
                 <View
                     style={{
@@ -223,7 +260,7 @@ class DetailSuratMasuk extends React.Component {
                                     paddingLeft: 10,
                                     paddingRight: 10
                                 }}
-                            >{this.props.route.params.nosuratmasuk}.pdf</Text>
+                            >B-1119G/Biro..SDM/KA.06.pdf</Text>
                             <TouchableOpacity style={{
                                 paddingRight: 10
                             }}>
@@ -232,167 +269,6 @@ class DetailSuratMasuk extends React.Component {
                             <TouchableOpacity>
                                 <Icon name='add-to-drive' size={25} color='#81868C' />
                             </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            )
-        } else {
-            return (
-                <View>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <View
-                            style={{
-                                height: 35,
-                                width: Dimensions.get('window').width / 3,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            <Text style={{
-                                fontSize: 14,
-                                fontWeight: 'bold',
-                                color: '#000',
-                                paddingRight:10
-                            }}>Pengirim</Text>
-                        </View>
-                        <View
-                            style={{
-                                height: 35,
-                                width: Dimensions.get('window').width / 5,
-                                justifyContent: 'center',
-                            }}
-                        >
-                            <Text style={{
-                                fontSize: 14,
-                                fontWeight: 'bold',
-                                color: '#000',
-                            }}>Tipe</Text>
-                        </View>
-                        <View
-                            style={{
-                                height: 35,
-                                width: Dimensions.get('window').width / 3,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            <Text style={{
-                                fontSize: 14,
-                                fontWeight: 'bold',
-                                color: '#000',
-                                paddingRight: 10
-                            }}>Posisi Surat</Text>
-                        </View>
-                    </View>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            backgroundColor: '#80C8EE'
-                        }}
-                    >
-                        <View
-                            style={{
-                                width: Dimensions.get('window').width / 3,
-                            }}
-                        >
-                            <Text
-                                style={{
-                                    color: '#000',
-                                    fontSize: 12
-                                }}
-                            >
-                                <Text style={{
-                                    fontSize: 12,
-                                    fontWeight: 'bold',
-                                    color: '#000'
-                                }}>Prasetyatiningsih</Text>
-                                (ANALIS KEPEGAWAIAN AHLI MUDA 5)
-                            </Text>
-                        </View>
-                        <View
-                            style={{
-                                width: Dimensions.get('window').width / 5,
-                                justifyContent: 'flex-start',
-                                alignItems:'center'
-                            }}
-                        >
-                            <View
-                                style={{
-                                    height: 50,
-                                    width: 60,
-                                    backgroundColor:'#0275FB',
-                                    alignItems:'center',
-                                    justifyContent:'center',
-                                    borderRadius:8,
-                                    marginTop: 20
-                                }}
-                            >
-                                <Icon name='inbox' size={30} color='white' />
-                                <Text style={{
-                                    fontSize: 13,
-                                    color: 'white'
-                                }}>INBOX</Text>
-                            </View>
-                        </View>
-                        <View
-                            style={{
-                                width: Dimensions.get('window').width / 3,
-                                justifyContent: 'flex-start',
-                            }}
-                        >
-                            <Text
-                                style={{
-                                    color: '#000',
-                                    fontSize: 12
-                                }}
-                            >
-                                <Text style={{
-                                    fontSize: 12,
-                                    fontWeight: 'bold',
-                                    color: '#000'
-                                }}>Tabita Mauliate Ulibasa</Text>
-                                (ANALIS KEPEGAWAIAN AHLI MUDA 5)
-                            </Text>
-                            <Text
-                                style={{
-                                    color: '#000',
-                                    fontSize: 12,
-                                    fontWeight: 'bold'
-                                }}
-                            >
-                                Tgl Terima:
-                            </Text>
-                            <Text
-                                style={{
-                                    color: '#000'
-                                }}
-                            >
-                                11-08-2021 10:334:04
-                            </Text>
-                            <Text
-                                style={{
-                                    color: '#000',
-                                    fontSize: 12,
-                                    fontWeight: 'bold'
-                                }}
-                            >
-                                Tgl Respon:
-                            </Text>
-                            <Text
-                                style={{
-                                    color: '#000'
-                                }}
-                            >
-                                -
-                            </Text>
                         </View>
                     </View>
                 </View>
@@ -410,7 +286,7 @@ class DetailSuratMasuk extends React.Component {
             >
                 <Header
                     title={this.state.ttileHeader}
-                    backgroundColor='#C33831'
+                    backgroundColor='#EB5F3C'
                     onpress={this.back}
                     fontSize={14}
                 />
@@ -429,22 +305,22 @@ class DetailSuratMasuk extends React.Component {
                         <TouchableOpacity
                             onPress={() => this.setState({
                                 tabDetailSurat: true,
-                                tabLihatSurat: false,
-                                tabSiklus: false
+                                tabTujuanSurat: false,
+                                tabFileSurat: false,
                             })}
                             style={{
                                 height: 35,
-                                width: Dimensions.get('window').width / 3,
+                                width: Dimensions.get('window').width / 4,
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 borderBottomWidth: 2,
-                                borderBottomColor: this.state.tabDetailSurat === true ? '#C43832' : 'transparent'
+                                borderBottomColor: this.state.tabDetailSurat === true ? '#EB5F3C' : 'transparent'
                             }}
                         >
                             <Text
                                 style={{
                                     fontSize: 14,
-                                    color: this.state.tabDetailSurat === true ? '#C43832' : '#717883'
+                                    color: this.state.tabDetailSurat === true ? '#EB5F3C' : '#717883'
                                 }}
                             >
                                 Detail Surat
@@ -453,8 +329,8 @@ class DetailSuratMasuk extends React.Component {
                         <TouchableOpacity
                             onPress={() => this.setState({
                                 tabDetailSurat: false,
-                                tabLihatSurat: true,
-                                tabSiklus: false
+                                tabTujuanSurat: true,
+                                tabFileSurat: false,
                             })}
                             style={{
                                 height: 35,
@@ -462,23 +338,23 @@ class DetailSuratMasuk extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 borderBottomWidth: 2,
-                                borderBottomColor: this.state.tabLihatSurat === true ? '#C43832' : 'transparent'
+                                borderBottomColor: this.state.tabTujuanSurat === true ? '#EB5F3C' : 'transparent'
                             }}
                         >
                             <Text
                                 style={{
                                     fontSize: 14,
-                                    color: this.state.tabLihatSurat === true ? '#C43832' : '#717883'
+                                    color: this.state.tabTujuanSurat === true ? '#EB5F3C' : '#717883'
                                 }}
                             >
-                                Lihat Surat
+                                Tujuan Surat
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={() => this.setState({
                                 tabDetailSurat: false,
-                                tabLihatSurat: false,
-                                tabSiklus: true
+                                tabTujuanSurat: false,
+                                tabFileSurat: true,
                             })}
                             style={{
                                 height: 35,
@@ -486,16 +362,16 @@ class DetailSuratMasuk extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 borderBottomWidth: 2,
-                                borderBottomColor: this.state.tabSiklus === true ? '#C43832' : 'transparent'
+                                borderBottomColor: this.state.tabFileSurat === true ? '#EB5F3C' : 'transparent'
                             }}
                         >
                             <Text
                                 style={{
                                     fontSize: 14,
-                                    color: this.state.tabSiklus === true ? '#C43832' : '#717883'
+                                    color: this.state.tabFileSurat === true ? '#EB5F3C' : '#717883'
                                 }}
                             >
-                                Siklus
+                                File Surat
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -507,10 +383,75 @@ class DetailSuratMasuk extends React.Component {
                             {this.renderContent()}
                         </ScrollView>
                     </View>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={this.state.modalVisible}
+                        onRequestClose={() => {
+                            this.setState({ modalVisible: !this.state.modalVisible });
+                        }}
+                    >
+                        <View style={{ flex: 1, justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)', alignItems: 'center' }}>
+                            <View style={{
+                                height: '50%',
+                                width: '80%',
+                                backgroundColor: 'white',
+                                borderRadius: 10,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}>
+                                {this.state.parafrase === true ? <Icon name='check' size={200} color='#F3BA46' /> : <Icon name='do-not-disturb' size={200} color='#F3BA46' />}
+                                <Text
+                                    style={{
+                                        color: '#000',
+                                        fontSize: 14,
+                                    }}
+                                >Masukan kode <Text
+                                    style={{
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        fontSize: 14
+                                    }}
+                                >Parafrase</Text></Text>
+                                <Text
+                                    style={{
+                                        fontWeight: 'bold',
+                                        color: '#000',
+                                        fontSize: 14,
+                                        paddingBottom: 50
+                                    }}
+                                >{this.state.parafrase === true ? "BERHASIL" : "GAGAL"}</Text>
+                                <TouchableOpacity
+                                    style={{
+                                        height: 30,
+                                        width: 30,
+                                        backgroundColor: '#F3BA46',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        borderRadius: 20,
+                                        position: 'absolute',
+                                        top: -15,
+                                        right: -10
+                                    }}
+                                    onPress={() => {
+                                        this.setState({ modalVisible: !this.state.modalVisible });
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontWeight: 'bold',
+                                            color: '#000',
+                                            fontSize: 20,
+                                        }}
+                                    >X</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
                 </View>
             </View>
         )
     }
 }
 
-export default DetailSuratMasuk
+export default DetailSuratKeluar

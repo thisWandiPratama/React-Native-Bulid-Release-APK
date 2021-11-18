@@ -55,3 +55,4 @@ $ cd android
 $ ./gradlew assembleRelease
 ```
 
+Hasil release apk bisa diambil di direktori ``android/app/build/outputs/apk/release`` dengan nama file ``apk-release.apk``

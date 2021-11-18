@@ -56,3 +56,5 @@ $ ./gradlew assembleRelease
 ```
 
 Hasil release apk bisa diambil di direktori ``android/app/build/outputs/apk/release`` dengan nama file ``apk-release.apk``
+
+![Screenshot from 2021-11-18 10-13-03](https://user-images.githubusercontent.com/47787767/142345291-19232bf2-b84b-431b-b5bd-e1b5a61669aa.png)

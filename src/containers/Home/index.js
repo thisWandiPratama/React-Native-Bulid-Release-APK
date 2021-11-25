@@ -43,27 +43,27 @@ export default class LoginView extends Component {
                 </View>
                 <View style={styles.content}>
                     <View style={styles.listContent}>
-                        <View style={[styles.boxContent, { marginRight: 40, marginBottom: 60 }]}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Surat Masuk')} style={[styles.boxContent, { marginRight: 40, marginBottom: 60 }]}>
                             <Icon name="inbox" size={70} color="white" />
                             <Text style={styles.count}>4104</Text>
                             <Text style={styles.countTitle}>Surat Masuk</Text>
-                        </View>
+                        </TouchableOpacity>
 
-                        <View style={[styles.boxContent, { backgroundColor: '#68B3C8' }]}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Disposisi')} style={[styles.boxContent, { backgroundColor: '#68B3C8' }]}>
                             <Icon name="assignment-ind" size={70} color="white" />
                             <Text style={styles.count}>116</Text>
                             <Text style={styles.countTitle}>Disposisi</Text>
-                        </View>
-                        <View style={[styles.boxContent, { marginRight: 40, backgroundColor: '#EB5F3C' }]}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Surat Keluar')} style={[styles.boxContent, { marginRight: 40, backgroundColor: '#EB5F3C' }]}>
                             <Icon name="mail" size={70} color="white" />
                             <Text style={styles.count}>5</Text>
                             <Text style={styles.countTitle}>Surat Keluar</Text>
-                        </View>
-                        <View style={[styles.boxContent, { backgroundColor: '#F3BA46', }]}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Draf Surat Keluar')} style={[styles.boxContent, { backgroundColor: '#F3BA46', }]}>
                             <Icon name="drafts" size={70} color="white" />
                             <Text style={styles.count}>18</Text>
                             <Text style={styles.countTitle}> Draft Surat Keluar</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>

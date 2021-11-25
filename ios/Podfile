@@ -12,6 +12,8 @@ target 'eOffice' do
     :hermes_enabled => false
   )
 
+  pod 'Interactable', :path => '../node_modules/react-native-interactable'
+
   target 'eOfficeTests' do
     inherit! :complete
     # Pods for testing

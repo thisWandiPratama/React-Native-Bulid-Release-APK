@@ -134,7 +134,7 @@ class DraftSuratKeluar extends React.Component {
   setTagTandai = (indexParam) => {
     let elementIndex = this.state.content.findIndex((element, index) => index == indexParam)
     let newContent = [...this.state.content]
-    newContent[elementIndex] = { ...newContent[elementIndex], tagTandai: !newContent[elementIndex].tagTandai }
+    newContent[elementIndex] = { ...newContent[elementIndex], tagTandaTangan: !newContent[elementIndex].tagTandaTangan }
     console.log(newContent)
     this.setState({ content: newContent })
   }
@@ -219,7 +219,7 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandai === true ? (
+                {value.tagTandaTangan === true ? (
                   <TouchableOpacity onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{
@@ -317,7 +317,7 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandai === true ? (
+                {value.tagTandaTangan === true ? (
                   <TouchableOpacity onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{
@@ -415,7 +415,7 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandai === true ? (
+                {value.tagTandaTangan === true ? (
                   <TouchableOpacity onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{
@@ -437,7 +437,7 @@ class DraftSuratKeluar extends React.Component {
           );
           break;
         case this.state.tagTandaTangan === value.tagTandaTangan &&
-          value.tagTandaTangan === true && value.tagTandai==true:
+          value.tagTandaTangan === true:
           return (
             <View
               key={index}
@@ -513,7 +513,7 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandai === true ? (
+                {value.tagTandaTangan === true ? (
                   <TouchableOpacity onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{

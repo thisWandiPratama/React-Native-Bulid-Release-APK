@@ -522,6 +522,7 @@ class DetailSuratMasuk extends React.Component {
             style={{
               height: '100%',
               backgroundColor: 'white',
+              flex:1
             }}>
             <ScrollView>{this.renderContent()}</ScrollView>
           </View>

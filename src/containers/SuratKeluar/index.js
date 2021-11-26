@@ -12,7 +12,7 @@ import {
   Animated,
   StyleSheet,
 } from 'react-native';
-import {styles} from './styles';
+import { styles } from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Interactable from 'react-native-interactable';
 const Screen = {
@@ -89,21 +89,33 @@ class SuratKeluar extends React.Component {
   }
 
   setModalVisible = visible => {
-    this.setState({modalVisible: visible});
+    this.setState({ modalVisible: visible });
   };
 
+
+  setTagTandai = (indexParam) => {
+    let elementIndex = this.state.content.findIndex((element, index) => index == indexParam)
+    let newContent = [...this.state.content]
+    newContent[elementIndex] = { ...newContent[elementIndex], tagTandai: !newContent[elementIndex].tagTandai }
+    console.log(newContent)
+    this.setState({ content: newContent })
+  }
+
+
+  setTagTandai = (indexParam) => {
+    let elementIndex = this.state.content.findIndex((element, index) => index == indexParam)
+    let newContent = [...this.state.content]
+    newContent[elementIndex] = { ...newContent[elementIndex], tagTelahDitandai: !newContent[elementIndex].tagTelahDitandai }
+    console.log(newContent)
+    this.setState({ content: newContent })
+  }
   renderContent = () => {
     return this.state.content.map((value, index) => {
       switch (true) {
         case this.state.tagTerbaru === value.tagTerbaru &&
           value.tagTerbaru === true:
           return (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate('DetailSuratKeluar', {
-                  nosuratmasuk: value.NoSeri,
-                })
-              }
+            <View
               key={index}
               style={{
                 height: 85,
@@ -113,38 +125,51 @@ class SuratKeluar extends React.Component {
                 flexDirection: 'row',
                 backgroundColor: 'white',
               }}>
-              <View
-                style={{
-                  width: 60,
-                  height: 85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text style={{fontSize: 18, color: '#000', fontWeight: 'bold'}}>
-                  {value.id}
-                </Text>
-              </View>
-              <View
+              <TouchableOpacity onPress={() =>
+                this.props.navigation.navigate('DetailSuratKeluar', {
+                  nosuratmasuk: value.NoSeri,
+                })
+              }
                 style={{
                   height: 85,
-                  width: 212,
-                  justifyContent: 'center',
+                  borderBottomWidth: 2,
+                  borderBottomColor: '#E7EAEF',
+                  flexDirection: 'row',
+                  backgroundColor: 'white',
                 }}>
-                <Text
+                <View
                   style={{
-                    fontSize: 15,
-                    color: '#000',
-                    fontWeight: 'bold',
+                    width: 60,
+                    height: 85,
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  {value.label}
-                </Text>
-                <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
-                  {value.title}
-                </Text>
-                <Text style={{fontSize: 15, color: '#80878E'}}>
-                  {value.NoSeri}
-                </Text>
-              </View>
+                  <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>
+                    {value.id}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    height: 85,
+                    width: 212,
+                    justifyContent: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: '#000',
+                      fontWeight: 'bold',
+                    }}>
+                    {value.label}
+                  </Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>
+                    {value.title}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: '#80878E' }}>
+                    {value.NoSeri}
+                  </Text>
+                </View>
+              </TouchableOpacity>
               <View
                 style={{
                   alignItems: 'center',
@@ -157,31 +182,30 @@ class SuratKeluar extends React.Component {
                   {value.date}
                 </Text>
                 {value.tagTelahDitandai === true ? (
-                  <Image
-                    source={{
-                      uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
-                    }}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{
+                        uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
+                      }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 ) : (
-                  <Image
-                    source={{uri: 'https://i.ibb.co/1bcvkCQ/pin.png'}}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 )}
               </View>
-            </TouchableOpacity>
+            </View>
           );
           break;
         case this.state.tagTelahDitandai === value.tagTelahDitandai &&
           value.tagTelahDitandai === true:
           return (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate('DetailSuratKeluar', {
-                  nosuratmasuk: value.NoSeri,
-                })
-              }
+            <View
               key={index}
               style={{
                 height: 85,
@@ -191,38 +215,51 @@ class SuratKeluar extends React.Component {
                 flexDirection: 'row',
                 backgroundColor: 'white',
               }}>
-              <View
-                style={{
-                  width: 60,
-                  height: 85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text style={{fontSize: 18, color: '#000', fontWeight: 'bold'}}>
-                  {value.id}
-                </Text>
-              </View>
-              <View
+              <TouchableOpacity onPress={() =>
+                this.props.navigation.navigate('DetailSuratKeluar', {
+                  nosuratmasuk: value.NoSeri,
+                })
+              }
                 style={{
                   height: 85,
-                  width: 212,
-                  justifyContent: 'center',
+                  borderBottomWidth: 2,
+                  borderBottomColor: '#E7EAEF',
+                  flexDirection: 'row',
+                  backgroundColor: 'white',
                 }}>
-                <Text
+                <View
                   style={{
-                    fontSize: 15,
-                    color: '#000',
-                    fontWeight: 'bold',
+                    width: 60,
+                    height: 85,
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  {value.label}
-                </Text>
-                <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
-                  {value.title}
-                </Text>
-                <Text style={{fontSize: 15, color: '#80878E'}}>
-                  {value.NoSeri}
-                </Text>
-              </View>
+                  <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>
+                    {value.id}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    height: 85,
+                    width: 212,
+                    justifyContent: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: '#000',
+                      fontWeight: 'bold',
+                    }}>
+                    {value.label}
+                  </Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>
+                    {value.title}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: '#80878E' }}>
+                    {value.NoSeri}
+                  </Text>
+                </View>
+              </TouchableOpacity>
               <View
                 style={{
                   alignItems: 'center',
@@ -235,20 +272,24 @@ class SuratKeluar extends React.Component {
                   {value.date}
                 </Text>
                 {value.tagTelahDitandai === true ? (
-                  <Image
-                    source={{
-                      uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
-                    }}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{
+                        uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
+                      }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 ) : (
-                  <Image
-                    source={{uri: 'https://i.ibb.co/1bcvkCQ/pin.png'}}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 )}
               </View>
-            </TouchableOpacity>
+            </View>
           );
           break;
       }
@@ -278,7 +319,7 @@ class SuratKeluar extends React.Component {
             </View>
           </View>
         </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <View style={styles.labelName}>
             <Icon name="mail" size={80} color="#EB5F3C" />
             <View style={styles.boxCount}>
@@ -287,7 +328,7 @@ class SuratKeluar extends React.Component {
             </View>
           </View>
         </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <View style={styles.boxTag}>
             <TouchableOpacity
               onPress={() =>
@@ -295,7 +336,7 @@ class SuratKeluar extends React.Component {
                   tagTelahDitandai: !this.state.tagTelahDitandai,
                   tagTerbaru:
                     this.state.tagTerbaru === true &&
-                    this.state.tagTerbaru === false
+                      this.state.tagTerbaru === false
                       ? false
                       : !this.state.tagTerbaru,
                 })
@@ -338,7 +379,7 @@ class SuratKeluar extends React.Component {
             </View>
             <TouchableOpacity
               onPress={() =>
-                this.setState({modalVisible: !this.state.modalVisible})
+                this.setState({ modalVisible: !this.state.modalVisible })
               }
               style={[
                 styles.listTag,
@@ -348,7 +389,7 @@ class SuratKeluar extends React.Component {
                   justifyContent: 'center',
                 },
               ]}>
-              <Text style={{fontSize: 11, color: '#EB5F3C'}}>Filter</Text>
+              <Text style={{ fontSize: 11, color: '#EB5F3C' }}>Filter</Text>
               <View
                 style={{
                   height: 18,
@@ -382,9 +423,9 @@ class SuratKeluar extends React.Component {
             }}>
             <TextInput
               placeholder="Cari Surat Keluar"
-              style={{paddingLeft: 50}}
+              style={{ paddingLeft: 50 }}
             />
-            <View style={{paddingRight: 15}}>
+            <View style={{ paddingRight: 15 }}>
               <Icon name="search" size={25} color="#727982" />
             </View>
           </View>
@@ -419,14 +460,14 @@ class SuratKeluar extends React.Component {
             />
             <Interactable.View
               verticalOnly={true}
-              snapPoints={[{y: 0}, {y: Screen.height - 400}, {y: Screen.height - 300}]}
-              boundaries={{top: -300}}
-              initialPosition={{y: Screen.height - 300}}
+              snapPoints={[{ y: 0 }, { y: Screen.height - 400 }, { y: Screen.height - 300 }]}
+              boundaries={{ top: -300 }}
+              initialPosition={{ y: Screen.height - 300 }}
               animatedValueY={this._deltaY}
               animatedValueX={this._deltaX}>
               <TouchableWithoutFeedback
-                onPress={() => this.setState({modalVisible: false})}>
-                <View style={{height: '10%'}} />
+                onPress={() => this.setState({ modalVisible: false })}>
+                <View style={{ height: '10%' }} />
               </TouchableWithoutFeedback>
               <View style={styless.panel}>
                 <View style={styless.panelHeader}>
@@ -492,7 +533,7 @@ class SuratKeluar extends React.Component {
                     <TouchableOpacity
                       style={[
                         styles.listTag,
-                        {backgroundColor: 'transparent'},
+                        { backgroundColor: 'transparent' },
                       ]}>
                       <Text
                         style={{
@@ -537,7 +578,7 @@ const styless = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     shadowColor: 'black',
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 },
     shadowRadius: 5,
     shadowOpacity: 0.4,
   },

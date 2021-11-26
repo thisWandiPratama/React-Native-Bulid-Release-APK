@@ -163,6 +163,23 @@ class DetailSuratMasuk extends React.Component {
               borderBottomWidth: 1,
               borderBottomColor: '#DCDDE1',
             }}>
+            Surat Biasa
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: 'bold',
+              color: '#000',
+              paddingTop: 10,
+            }}>
+            Sifat Surat
+          </Text>
+          <Text
+            style={{
+              paddingBottom: 10,
+              borderBottomWidth: 1,
+              borderBottomColor: '#DCDDE1',
+            }}>
             Biasa
           </Text>
           <Text

@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Home from '../containers/Home/';
+import Dashboard from '../containers/Home/';
 import SuratMasuk from '../containers/SuratMasuk';
 import Disposisi from '../containers/Disposisi';
 import DrafSuratKeluar from '../containers/DrafSuratKeluar';
@@ -27,7 +27,7 @@ const TabHome = () => {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
 
-          if (route.name === 'Dashboard') {
+          if (route.name === 'Home') {
             iconName = focused ? 'dashboard' : 'dashboard';
             color = color ? color : '#2496F3';
           } else if (route.name === 'Surat Masuk') {
@@ -44,7 +44,7 @@ const TabHome = () => {
           return <Icon name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor:
-          route.name === 'Dashboard'
+          route.name === 'Home'
             ? '#2496F3'
             : route.name === 'Surat Masuk'
             ? '#C33831'
@@ -55,7 +55,7 @@ const TabHome = () => {
             : '#EB5F3C',
         tabBarInactiveTintColor: 'gray',
       })}>
-      <Tab.Screen name="Dashboard" component={Home} />
+      <Tab.Screen name="Home" component={Dashboard} />
       <Tab.Screen name="Surat Masuk" component={SuratMasuk} />
       <Tab.Screen name="Disposisi" component={Disposisi} />
       <Tab.Screen name="Draf Surat Keluar" component={DrafSuratKeluar} />

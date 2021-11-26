@@ -12,7 +12,7 @@ import {
   TouchableWithoutFeedback,
   StyleSheet
 } from 'react-native';
-import {styles} from './styles';
+import { styles } from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Interactable from 'react-native-interactable';
 const Screen = {
@@ -125,21 +125,27 @@ class DraftSuratKeluar extends React.Component {
     };
   }
 
+
   setModalVisible = visible => {
-    this.setState({modalVisible: visible});
+    this.setState({ modalVisible: visible });
   };
+
+
+  setTagTandai = (indexParam) => {
+    let elementIndex = this.state.content.findIndex((element, index) => index == indexParam)
+    let newContent = [...this.state.content]
+    newContent[elementIndex] = { ...newContent[elementIndex], tagTandai: !newContent[elementIndex].tagTandai }
+    console.log(newContent)
+    this.setState({ content: newContent })
+  }
+
 
   renderContent = () => {
     return this.state.content.map((value, index) => {
       switch (true) {
         case this.state.tagAll === true:
           return (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate('DetailDraftSuratKeluar', {
-                  nosuratmasuk: value.NoSeri,
-                })
-              }
+            <View
               key={index}
               style={{
                 height: 85,
@@ -151,43 +157,57 @@ class DraftSuratKeluar extends React.Component {
                   value.tagVerifikasi === true
                     ? '#83D1F5'
                     : value.tagApproved === true
-                    ? '#82CA9C'
-                    : value.tagTandaTangan === true
-                    ? '#F8C689'
-                    : 'white',
+                      ? '#82CA9C'
+                      : value.tagTandaTangan === true
+                        ? '#F8C689'
+                        : 'white',
               }}>
-              <View
-                style={{
-                  width: 60,
-                  height: 85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text style={{fontSize: 18, color: '#000', fontWeight: 'bold'}}>
-                  {value.id}
-                </Text>
-              </View>
-              <View
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('DetailDraftSuratKeluar', {
+                    nosuratmasuk: value.NoSeri,
+                  })
+                }
                 style={{
                   height: 85,
-                  width: 212,
-                  justifyContent: 'center',
-                }}>
-                <Text
+                  borderBottomWidth: 2,
+                  borderBottomColor: '#E7EAEF',
+                  flexDirection: 'row',
+                }}
+              >
+                <View
                   style={{
-                    fontSize: 15,
-                    color: '#000',
-                    fontWeight: 'bold',
+                    width: 60,
+                    height: 85,
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  {value.label}
-                </Text>
-                <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
-                  {value.title}
-                </Text>
-                <Text style={{fontSize: 15, color: '#80878E'}}>
-                  {value.NoSeri}
-                </Text>
-              </View>
+                  <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>
+                    {value.id}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    height: 85,
+                    width: 212,
+                    justifyContent: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: '#000',
+                      fontWeight: 'bold',
+                    }}>
+                    {value.label}
+                  </Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>
+                    {value.title}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: '#80878E' }}>
+                    {value.NoSeri}
+                  </Text>
+                </View>
+              </TouchableOpacity>
               <View
                 style={{
                   alignItems: 'center',
@@ -199,32 +219,31 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tandai === true ? (
-                  <Image
-                    source={{
-                      uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
-                    }}
-                    style={{height: 25, width: 25}}
-                  />
+                {value.tagTandai === true ? (
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{
+                        uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
+                      }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 ) : (
-                  <Image
-                    source={{uri: 'https://i.ibb.co/1bcvkCQ/pin.png'}}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 )}
               </View>
-            </TouchableOpacity>
+            </View>
           );
           break;
         case this.state.tagVerifikasi === value.tagVerifikasi &&
           value.tagVerifikasi === true:
           return (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate('DetailDraftSuratKeluar', {
-                  nosuratmasuk: value.NoSeri,
-                })
-              }
+            <View
               key={index}
               style={{
                 height: 85,
@@ -233,40 +252,60 @@ class DraftSuratKeluar extends React.Component {
                 borderBottomColor: '#E7EAEF',
                 flexDirection: 'row',
                 backgroundColor:
-                  value.tagVerifikasi === true ? '#83D1F5' : 'white',
+                  value.tagVerifikasi === true
+                    ? '#83D1F5'
+                    : value.tagApproved === true
+                      ? '#82CA9C'
+                      : value.tagTandaTangan === true
+                        ? '#F8C689'
+                        : 'white',
               }}>
-              <View
-                style={{
-                  width: 60,
-                  height: 85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text style={{fontSize: 18, color: '#000', fontWeight: 'bold'}}>
-                  {value.id}
-                </Text>
-              </View>
-              <View
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('DetailDraftSuratKeluar', {
+                    nosuratmasuk: value.NoSeri,
+                  })
+                }
                 style={{
                   height: 85,
-                  width: 212,
-                  justifyContent: 'center',
-                }}>
-                <Text
+                  borderBottomWidth: 2,
+                  borderBottomColor: '#E7EAEF',
+                  flexDirection: 'row',
+                }}
+              >
+                <View
                   style={{
-                    fontSize: 15,
-                    color: '#000',
-                    fontWeight: 'bold',
+                    width: 60,
+                    height: 85,
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  {value.label}
-                </Text>
-                <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
-                  {value.title}
-                </Text>
-                <Text style={{fontSize: 15, color: '#80878E'}}>
-                  {value.NoSeri}
-                </Text>
-              </View>
+                  <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>
+                    {value.id}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    height: 85,
+                    width: 212,
+                    justifyContent: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: '#000',
+                      fontWeight: 'bold',
+                    }}>
+                    {value.label}
+                  </Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>
+                    {value.title}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: '#80878E' }}>
+                    {value.NoSeri}
+                  </Text>
+                </View>
+              </TouchableOpacity>
               <View
                 style={{
                   alignItems: 'center',
@@ -278,32 +317,31 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tandai === true ? (
-                  <Image
-                    source={{
-                      uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
-                    }}
-                    style={{height: 25, width: 25}}
-                  />
+                {value.tagTandai === true ? (
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{
+                        uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
+                      }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 ) : (
-                  <Image
-                    source={{uri: 'https://i.ibb.co/1bcvkCQ/pin.png'}}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 )}
               </View>
-            </TouchableOpacity>
+            </View>
           );
           break;
         case this.state.tagApproved === value.tagApproved &&
           value.tagApproved === true:
           return (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate('DetailDraftSuratKeluar', {
-                  nosuratmasuk: value.NoSeri,
-                })
-              }
+            <View
               key={index}
               style={{
                 height: 85,
@@ -312,40 +350,60 @@ class DraftSuratKeluar extends React.Component {
                 borderBottomColor: '#E7EAEF',
                 flexDirection: 'row',
                 backgroundColor:
-                  value.tagApproved === true ? '#82CA9C' : 'white',
+                  value.tagVerifikasi === true
+                    ? '#83D1F5'
+                    : value.tagApproved === true
+                      ? '#82CA9C'
+                      : value.tagTandaTangan === true
+                        ? '#F8C689'
+                        : 'white',
               }}>
-              <View
-                style={{
-                  width: 60,
-                  height: 85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text style={{fontSize: 18, color: '#000', fontWeight: 'bold'}}>
-                  {value.id}
-                </Text>
-              </View>
-              <View
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('DetailDraftSuratKeluar', {
+                    nosuratmasuk: value.NoSeri,
+                  })
+                }
                 style={{
                   height: 85,
-                  width: 212,
-                  justifyContent: 'center',
-                }}>
-                <Text
+                  borderBottomWidth: 2,
+                  borderBottomColor: '#E7EAEF',
+                  flexDirection: 'row',
+                }}
+              >
+                <View
                   style={{
-                    fontSize: 15,
-                    color: '#000',
-                    fontWeight: 'bold',
+                    width: 60,
+                    height: 85,
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  {value.label}
-                </Text>
-                <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
-                  {value.title}
-                </Text>
-                <Text style={{fontSize: 15, color: '#80878E'}}>
-                  {value.NoSeri}
-                </Text>
-              </View>
+                  <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>
+                    {value.id}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    height: 85,
+                    width: 212,
+                    justifyContent: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: '#000',
+                      fontWeight: 'bold',
+                    }}>
+                    {value.label}
+                  </Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>
+                    {value.title}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: '#80878E' }}>
+                    {value.NoSeri}
+                  </Text>
+                </View>
+              </TouchableOpacity>
               <View
                 style={{
                   alignItems: 'center',
@@ -358,31 +416,30 @@ class DraftSuratKeluar extends React.Component {
                   {value.date}
                 </Text>
                 {value.tagTandai === true ? (
-                  <Image
-                    source={{
-                      uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
-                    }}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{
+                        uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
+                      }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 ) : (
-                  <Image
-                    source={{uri: 'https://i.ibb.co/1bcvkCQ/pin.png'}}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 )}
               </View>
-            </TouchableOpacity>
+            </View>
           );
           break;
         case this.state.tagTandaTangan === value.tagTandaTangan &&
-          value.tagTandaTangan === true:
+          value.tagTandaTangan === true && value.tagTandai==true:
           return (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate('DetailDraftSuratKeluar', {
-                  nosuratmasuk: value.NoSeri,
-                })
-              }
+            <View
               key={index}
               style={{
                 height: 85,
@@ -391,40 +448,60 @@ class DraftSuratKeluar extends React.Component {
                 borderBottomColor: '#E7EAEF',
                 flexDirection: 'row',
                 backgroundColor:
-                  value.tagTandaTangan === true ? '#F8C689' : 'white',
+                  value.tagVerifikasi === true
+                    ? '#83D1F5'
+                    : value.tagApproved === true
+                      ? '#82CA9C'
+                      : value.tagTandaTangan === true
+                        ? '#F8C689'
+                        : 'white',
               }}>
-              <View
-                style={{
-                  width: 60,
-                  height: 85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <Text style={{fontSize: 18, color: '#000', fontWeight: 'bold'}}>
-                  {value.id}
-                </Text>
-              </View>
-              <View
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('DetailDraftSuratKeluar', {
+                    nosuratmasuk: value.NoSeri,
+                  })
+                }
                 style={{
                   height: 85,
-                  width: 212,
-                  justifyContent: 'center',
-                }}>
-                <Text
+                  borderBottomWidth: 2,
+                  borderBottomColor: '#E7EAEF',
+                  flexDirection: 'row',
+                }}
+              >
+                <View
                   style={{
-                    fontSize: 15,
-                    color: '#000',
-                    fontWeight: 'bold',
+                    width: 60,
+                    height: 85,
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  {value.label}
-                </Text>
-                <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
-                  {value.title}
-                </Text>
-                <Text style={{fontSize: 15, color: '#80878E'}}>
-                  {value.NoSeri}
-                </Text>
-              </View>
+                  <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>
+                    {value.id}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    height: 85,
+                    width: 212,
+                    justifyContent: 'center',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      color: '#000',
+                      fontWeight: 'bold',
+                    }}>
+                    {value.label}
+                  </Text>
+                  <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#000' }}>
+                    {value.title}
+                  </Text>
+                  <Text style={{ fontSize: 15, color: '#80878E' }}>
+                    {value.NoSeri}
+                  </Text>
+                </View>
+              </TouchableOpacity>
               <View
                 style={{
                   alignItems: 'center',
@@ -437,20 +514,24 @@ class DraftSuratKeluar extends React.Component {
                   {value.date}
                 </Text>
                 {value.tagTandai === true ? (
-                  <Image
-                    source={{
-                      uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
-                    }}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{
+                        uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
+                      }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 ) : (
-                  <Image
-                    source={{uri: 'https://i.ibb.co/1bcvkCQ/pin.png'}}
-                    style={{height: 25, width: 25}}
-                  />
+                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                    <Image
+                      source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
+                      style={{ height: 25, width: 25 }}
+                    />
+                  </TouchableOpacity>
                 )}
               </View>
-            </TouchableOpacity>
+            </View>
           );
           break;
       }
@@ -480,7 +561,7 @@ class DraftSuratKeluar extends React.Component {
             </View>
           </View>
         </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <View style={styles.labelName}>
             <Icon name="inbox" size={80} color="#F3BA46" />
             <View style={styles.boxCount}>
@@ -489,7 +570,7 @@ class DraftSuratKeluar extends React.Component {
             </View>
           </View>
         </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <View style={styles.boxTag}>
             <TouchableOpacity
               onPress={() =>
@@ -499,7 +580,7 @@ class DraftSuratKeluar extends React.Component {
                   tagTandaTangan: false,
                   tagAll:
                     this.state.tagApproved === true ||
-                    (this.state.tagTandaTangan && this.state.tagAll === false)
+                      (this.state.tagTandaTangan && this.state.tagAll === false)
                       ? false
                       : !this.state.tagAll,
                 })
@@ -531,7 +612,7 @@ class DraftSuratKeluar extends React.Component {
                   tagTandaTangan: false,
                   tagAll:
                     this.state.tagVerifikasi === true ||
-                    (this.state.tagTandaTangan && this.state.tagAll === false)
+                      (this.state.tagTandaTangan && this.state.tagAll === false)
                       ? false
                       : !this.state.tagAll,
                 })
@@ -560,7 +641,7 @@ class DraftSuratKeluar extends React.Component {
                   tagTandaTangan: !this.state.tagTandaTangan,
                   tagAll:
                     this.state.tagVerifikasi === true ||
-                    (this.state.tagApproved && this.state.tagAll === false)
+                      (this.state.tagApproved && this.state.tagAll === false)
                       ? false
                       : !this.state.tagAll,
                 })
@@ -586,7 +667,7 @@ class DraftSuratKeluar extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() =>
-                this.setState({modalVisible: !this.state.modalVisible})
+                this.setState({ modalVisible: !this.state.modalVisible })
               }
               style={[
                 styles.listTag,
@@ -596,7 +677,7 @@ class DraftSuratKeluar extends React.Component {
                   justifyContent: 'center',
                 },
               ]}>
-              <Text style={{fontSize: 11, color: '#F3BA46'}}>Filter</Text>
+              <Text style={{ fontSize: 11, color: '#F3BA46' }}>Filter</Text>
               <View
                 style={{
                   height: 18,
@@ -630,9 +711,9 @@ class DraftSuratKeluar extends React.Component {
             }}>
             <TextInput
               placeholder="Cari Draft Surat Keluar"
-              style={{paddingLeft: 50}}
+              style={{ paddingLeft: 50 }}
             />
-            <View style={{paddingRight: 15}}>
+            <View style={{ paddingRight: 15 }}>
               <Icon name="search" size={25} color="#727982" />
             </View>
           </View>
@@ -667,14 +748,14 @@ class DraftSuratKeluar extends React.Component {
             />
             <Interactable.View
               verticalOnly={true}
-              snapPoints={[{y: 0}, {y: Screen.height - 400}, {y: Screen.height - 300}]}
-              boundaries={{top: -300}}
-              initialPosition={{y: Screen.height - 300}}
+              snapPoints={[{ y: 0 }, { y: Screen.height - 400 }, { y: Screen.height - 300 }]}
+              boundaries={{ top: -300 }}
+              initialPosition={{ y: Screen.height - 300 }}
               animatedValueY={this._deltaY}
               animatedValueX={this._deltaX}>
               <TouchableWithoutFeedback
-                onPress={() => this.setState({modalVisible: false})}>
-                <View style={{height: '10%'}} />
+                onPress={() => this.setState({ modalVisible: false })}>
+                <View style={{ height: '10%' }} />
               </TouchableWithoutFeedback>
               <View style={styless.panel}>
                 <View style={styless.panelHeader}>
@@ -740,7 +821,7 @@ class DraftSuratKeluar extends React.Component {
                     <TouchableOpacity
                       style={[
                         styles.listTag,
-                        {backgroundColor: 'transparent'},
+                        { backgroundColor: 'transparent' },
                       ]}>
                       <Text
                         style={{
@@ -767,7 +848,7 @@ class DraftSuratKeluar extends React.Component {
                       width: '100%',
                       flexWrap: 'wrap',
                     }}>
-                    <TouchableOpacity style={[styles.listTag, {width: 80}]}>
+                    <TouchableOpacity style={[styles.listTag, { width: 80 }]}>
                       <Text
                         style={{
                           fontSize: 11,
@@ -777,7 +858,7 @@ class DraftSuratKeluar extends React.Component {
                         Verifikasi
                       </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.listTag, {width: 80}]}>
+                    <TouchableOpacity style={[styles.listTag, { width: 80 }]}>
                       <Text
                         style={{
                           fontSize: 11,
@@ -787,7 +868,7 @@ class DraftSuratKeluar extends React.Component {
                         Approved
                       </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.listTag, {width: 80}]}>
+                    <TouchableOpacity style={[styles.listTag, { width: 80 }]}>
                       <Text
                         style={{
                           fontSize: 11,
@@ -811,70 +892,69 @@ class DraftSuratKeluar extends React.Component {
 export default DraftSuratKeluar;
 
 const styless = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#efefef',
-    },
-    panelContainer: {
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-    },
-    panel: {
-      height: Screen.height + 300,
-      padding: 20,
-      backgroundColor: '#ffffff',
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
-      shadowColor: 'black',
-      shadowOffset: {width: 0, height: 0},
-      shadowRadius: 5,
-      shadowOpacity: 0.4,
-    },
-    panelHeader: {
-      alignItems: 'center',
-    },
-    panelHandle: {
-      width: 40,
-      height: 8,
-      borderRadius: 4,
-      backgroundColor: '#00000040',
-      marginBottom: 10,
-    },
-    panelTitle: {
-      fontSize: 27,
-      height: 35,
-    },
-    panelSubtitle: {
-      fontSize: 14,
-      color: 'gray',
-      height: 30,
-      marginBottom: 10,
-    },
-    panelButton: {
-      padding: 20,
-      borderRadius: 10,
-      backgroundColor: '#459FED',
-      alignItems: 'center',
-      marginVertical: 10,
-    },
-    panelButtonTitle: {
-      fontSize: 17,
-      fontWeight: 'bold',
-      color: 'white',
-    },
-    photo: {
-      width: Screen.width - 40,
-      height: 225,
-      marginTop: 30,
-    },
-    map: {
-      height: Screen.height,
-      width: Screen.width,
-    },
-  });
-  
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#efefef',
+  },
+  panelContainer: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  panel: {
+    height: Screen.height + 300,
+    padding: 20,
+    backgroundColor: '#ffffff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 0 },
+    shadowRadius: 5,
+    shadowOpacity: 0.4,
+  },
+  panelHeader: {
+    alignItems: 'center',
+  },
+  panelHandle: {
+    width: 40,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#00000040',
+    marginBottom: 10,
+  },
+  panelTitle: {
+    fontSize: 27,
+    height: 35,
+  },
+  panelSubtitle: {
+    fontSize: 14,
+    color: 'gray',
+    height: 30,
+    marginBottom: 10,
+  },
+  panelButton: {
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: '#459FED',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  panelButtonTitle: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  photo: {
+    width: Screen.width - 40,
+    height: 225,
+    marginTop: 30,
+  },
+  map: {
+    height: Screen.height,
+    width: Screen.width,
+  },
+});

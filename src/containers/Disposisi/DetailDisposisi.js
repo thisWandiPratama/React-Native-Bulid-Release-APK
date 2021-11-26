@@ -28,7 +28,8 @@ class DetailPosisi extends React.Component {
             return (
                 <View style={{
                     margin: 10,
-                    marginTop: 15
+                    // marginTop: 15,
+                    flex:1
                 }}>
                     <Text
                         style={{
@@ -57,7 +58,7 @@ class DetailPosisi extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        11 Agustus 2021
+                        23 Desember 2020
                     </Text>
                     <Text
                         style={{
@@ -66,13 +67,13 @@ class DetailPosisi extends React.Component {
                             color: '#000',
                             paddingTop: 10
                         }}
-                    >Sifat Surat</Text>
+                    >Tanggal Disposisi</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        Biasa
+                        29 Desember 2020
                     </Text>
                     <Text
                         style={{
@@ -87,7 +88,7 @@ class DetailPosisi extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        ANALIS KEPEGAWAIAN AHLI MUDA 5
+                        Sub Bagian Penyusunan Anggaran 
                     </Text>
                     <Text
                         style={{
@@ -102,7 +103,7 @@ class DetailPosisi extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        11 Agustus 2021 10:32
+                        23 Desember 2020
                     </Text>
                     <Text
                         style={{
@@ -111,13 +112,13 @@ class DetailPosisi extends React.Component {
                             color: '#000',
                             paddingTop: 10
                         }}
-                    >Status Surat</Text>
+                    >SifatSurat</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        BARU
+                        Biasa
                     </Text>
                     <Text
                         style={{
@@ -132,7 +133,22 @@ class DetailPosisi extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        Demo
+                        Matriks kegiatan Rentra Tahun 2020-2024
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: '#000',
+                            paddingTop: 10
+                        }}
+                    >Status</Text>
+                    <Text style={{
+                        paddingBottom: 10,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#DCDDE1'
+                    }}>
+                        DISPOSISI
                     </Text>
                     <Text
                         style={{
@@ -147,7 +163,7 @@ class DetailPosisi extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        PR.01.04 Musyawarah Perencanaan Pemmbagunan Nasional (Musrenbang)
+                        KP.10 Pembinaan Jabatan Fungsional
                     </Text>
                     <Text
                         style={{
@@ -156,13 +172,13 @@ class DetailPosisi extends React.Component {
                             color: '#000',
                             paddingTop: 10
                         }}
-                    >Jenis Surat</Text>
+                    >Isi Disposisi</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        Surat Undangan
+                        -
                     </Text>
                     <Text
                         style={{
@@ -177,7 +193,7 @@ class DetailPosisi extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        299
+                        3720
                     </Text>
                 </View>
             )
@@ -551,7 +567,8 @@ class DetailPosisi extends React.Component {
                     </View>
                     <View style={{
                         height: '100%',
-                        backgroundColor: 'white'
+                        backgroundColor: 'white',
+                        flex:1
                     }}>
                         <ScrollView>
                             {this.renderContent()}

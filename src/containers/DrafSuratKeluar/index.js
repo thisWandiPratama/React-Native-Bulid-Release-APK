@@ -134,7 +134,7 @@ class DraftSuratKeluar extends React.Component {
   setTagTandai = (indexParam) => {
     let elementIndex = this.state.content.findIndex((element, index) => index == indexParam)
     let newContent = [...this.state.content]
-    newContent[elementIndex] = { ...newContent[elementIndex], tagTandaTangan: !newContent[elementIndex].tagTandaTangan }
+    newContent[elementIndex] = { ...newContent[elementIndex], tagTandai: !newContent[elementIndex].tagTandai }
     console.log(newContent)
     this.setState({ content: newContent })
   }
@@ -437,7 +437,7 @@ class DraftSuratKeluar extends React.Component {
           );
           break;
         case this.state.tagTandaTangan === value.tagTandaTangan &&
-          value.tagTandaTangan === true:
+          value.tagTandai == true || value.tagTandai == false && value.tagTandaTangan === true:
           return (
             <View
               key={index}
@@ -513,8 +513,19 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandaTangan === true ? (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                {value.tagTandai === true ? (
+                  <TouchableOpacity onPress={() => {
+                    console.log(index)
+                    let result
+                    if (index == 1) {
+                      result = 1
+                    } else if (index == 4) {
+                      result = 4
+                    } else {
+                      result = 5
+                    }
+                    this.setTagTandai(result)
+                  }}>
                     <Image
                       source={{
                         uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',

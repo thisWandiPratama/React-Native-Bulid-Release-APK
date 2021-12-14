@@ -112,7 +112,7 @@ class DetailPosisi extends React.Component {
                             color: '#000',
                             paddingTop: 10
                         }}
-                    >SifatSurat</Text>
+                    >Sifat Surat</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,
@@ -157,7 +157,7 @@ class DetailPosisi extends React.Component {
                             color: '#000',
                             paddingTop: 10
                         }}
-                    >Klassifikasi Surat</Text>
+                    >Klasifikasi Surat</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,
@@ -264,7 +264,7 @@ class DetailPosisi extends React.Component {
                             fontWeight: 'bold',
                             color: '#000',
                         }}
-                    >Laporan Surat</Text>
+                    >Surat Disposisi</Text>
                     <Text style={{
                         paddingBottom: 10,
                         borderBottomWidth: 1,

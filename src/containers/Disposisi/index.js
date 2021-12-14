@@ -129,7 +129,7 @@ class Disposisi extends React.Component {
             flexDirection: 'row',
           }}>
           <TouchableOpacity onPress={() =>
-            this.props.navigation.navigate('DetailSuratMasuk', {
+            this.props.navigation.navigate('DetailDisposisi', {
               nosuratmasuk: value.NoSeri,
             })
           }
@@ -179,6 +179,7 @@ class Disposisi extends React.Component {
             <Text
               style={{
                 paddingBottom: 10,
+                alignItems:'flex-end'
               }}>
               {value.date}
             </Text>
@@ -220,7 +221,7 @@ class Disposisi extends React.Component {
             }}>
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate('DetailSuratMasuk', {
+                this.props.navigation.navigate('DetailDisposisi', {
                   nosuratmasuk: value.NoSeri,
                 })
               }
@@ -272,6 +273,7 @@ class Disposisi extends React.Component {
               <Text
                 style={{
                   paddingBottom: 10,
+                  alignItems:'flex-end'
                 }}>
                 {value.date}
               </Text>
@@ -316,7 +318,7 @@ class Disposisi extends React.Component {
             }}>
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate('DetailSuratMasuk', {
+                this.props.navigation.navigate('DetailDisposisi', {
                   nosuratmasuk: value.NoSeri,
                 })
               }
@@ -368,6 +370,7 @@ class Disposisi extends React.Component {
               <Text
                 style={{
                   paddingBottom: 10,
+                  alignItems:'flex-end'
                 }}>
                 {value.date}
               </Text>
@@ -409,7 +412,7 @@ class Disposisi extends React.Component {
             }}>
             <TouchableOpacity
               onPress={() =>
-                this.props.navigation.navigate('DetailSuratMasuk', {
+                this.props.navigation.navigate('DetailDisposisi', {
                   nosuratmasuk: value.NoSeri,
                 })
               }
@@ -461,6 +464,7 @@ class Disposisi extends React.Component {
               <Text
                 style={{
                   paddingBottom: 10,
+                  alignItems:'flex-end'
                 }}>
                 {value.date}
               </Text>

@@ -178,6 +178,7 @@ class SuratKeluar extends React.Component {
                 <Text
                   style={{
                     paddingBottom: 10,
+                  alignItems:'flex-end'
                   }}>
                   {value.date}
                 </Text>
@@ -268,6 +269,7 @@ class SuratKeluar extends React.Component {
                 <Text
                   style={{
                     paddingBottom: 10,
+                  alignItems:'flex-end'
                   }}>
                   {value.date}
                 </Text>

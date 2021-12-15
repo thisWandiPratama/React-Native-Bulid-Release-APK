@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, Dimensions, TouchableOpacity, ScrollView, Image } from 'react-native'
 import Header from '../../components/header'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Swiper from 'react-native-swiper';
+
 
 
 class DetailPosisi extends React.Component {
@@ -12,7 +14,9 @@ class DetailPosisi extends React.Component {
             tabLihatSurat: false,
             tabSiklus: false,
             tabLaporan: false,
-            ttileHeader: ''
+            ttileHeader: '',
+            count: 0,
+            parafrase: true,
         }
     }
 
@@ -24,12 +28,16 @@ class DetailPosisi extends React.Component {
     }
 
     renderContent = () => {
-        if (this.state.tabDetailSurat === true) {
             return (
+                <Swiper
+                loop={false}
+                showsPagination={false}
+                index={this.state.count}
+                onIndexChanged={index => this.setState({count: index})}>
                 <View style={{
                     margin: 10,
                     // marginTop: 15,
-                    flex:1
+                    flex: 1
                 }}>
                     <Text
                         style={{
@@ -88,7 +96,7 @@ class DetailPosisi extends React.Component {
                         borderBottomWidth: 1,
                         borderBottomColor: '#DCDDE1'
                     }}>
-                        Sub Bagian Penyusunan Anggaran 
+                        Sub Bagian Penyusunan Anggaran
                     </Text>
                     <Text
                         style={{
@@ -196,9 +204,7 @@ class DetailPosisi extends React.Component {
                         3720
                     </Text>
                 </View>
-            )
-        } else if (this.state.tabLihatSurat === true) {
-            return (
+            
                 <View
                     style={{
                         margin: 20,
@@ -251,9 +257,6 @@ class DetailPosisi extends React.Component {
                         </View>
                     </View>
                 </View>
-            )
-        } else if (this.state.tabLaporan === true) {
-            return (
                 <View style={{
                     margin: 10,
                     marginTop: 15
@@ -273,9 +276,7 @@ class DetailPosisi extends React.Component {
                         {this.props.route.params.nosuratmasuk}
                     </Text>
                 </View>
-            )
-        } else {
-            return (
+              
                 <View>
                     <View
                         style={{
@@ -434,9 +435,9 @@ class DetailPosisi extends React.Component {
                         </View>
                     </View>
                 </View>
+                </Swiper>
             )
         }
-    }
 
     render() {
         return (
@@ -466,10 +467,7 @@ class DetailPosisi extends React.Component {
                     >
                         <TouchableOpacity
                             onPress={() => this.setState({
-                                tabDetailSurat: true,
-                                tabLihatSurat: false,
-                                tabSiklus: false,
-                                tabLaporan: false
+                                count: 0
                             })}
                             style={{
                                 height: 35,
@@ -477,13 +475,13 @@ class DetailPosisi extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 borderBottomWidth: 2,
-                                borderBottomColor: this.state.tabDetailSurat === true ? '#68B3C8' : 'transparent'
+                                borderBottomColor: this.state.count === 0 === true ? '#68B3C8' : 'transparent'
                             }}
                         >
                             <Text
                                 style={{
                                     fontSize: 14,
-                                    color: this.state.tabDetailSurat === true ? '#68B3C8' : '#717883'
+                                    color: this.state.count === 0 === true ? '#68B3C8' : '#717883'
                                 }}
                             >
                                 Detail Surat
@@ -491,10 +489,7 @@ class DetailPosisi extends React.Component {
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={() => this.setState({
-                                tabDetailSurat: false,
-                                tabLihatSurat: true,
-                                tabSiklus: false,
-                                tabLaporan: false
+                                count: 1
                             })}
                             style={{
                                 height: 35,
@@ -502,13 +497,13 @@ class DetailPosisi extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 borderBottomWidth: 2,
-                                borderBottomColor: this.state.tabLihatSurat === true ? '#68B3C8' : 'transparent'
+                                borderBottomColor: this.state.count === 1 ? '#68B3C8' : 'transparent'
                             }}
                         >
                             <Text
                                 style={{
                                     fontSize: 14,
-                                    color: this.state.tabLihatSurat === true ? '#68B3C8' : '#717883'
+                                    color: this.state.count === 1 ? '#68B3C8' : '#717883'
                                 }}
                             >
                                 Lihat Surat
@@ -516,10 +511,7 @@ class DetailPosisi extends React.Component {
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={() => this.setState({
-                                tabDetailSurat: false,
-                                tabLihatSurat: false,
-                                tabSiklus: true,
-                                tabLaporan: false
+                                count: 2
                             })}
                             style={{
                                 height: 35,
@@ -527,13 +519,13 @@ class DetailPosisi extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 borderBottomWidth: 2,
-                                borderBottomColor: this.state.tabSiklus === true ? '#68B3C8' : 'transparent'
+                                borderBottomColor: this.state.count === 2 ? '#68B3C8' : 'transparent'
                             }}
                         >
                             <Text
                                 style={{
                                     fontSize: 14,
-                                    color: this.state.tabSiklus === true ? '#68B3C8' : '#717883'
+                                    color: this.state.count === 2 ? '#68B3C8' : '#717883'
                                 }}
                             >
                                 Siklus
@@ -541,10 +533,7 @@ class DetailPosisi extends React.Component {
                         </TouchableOpacity>
                         <TouchableOpacity
                             onPress={() => this.setState({
-                                tabDetailSurat: false,
-                                tabLihatSurat: false,
-                                tabSiklus: false,
-                                tabLaporan: true
+                                count: 3
                             })}
                             style={{
                                 height: 35,
@@ -552,13 +541,13 @@ class DetailPosisi extends React.Component {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 borderBottomWidth: 2,
-                                borderBottomColor: this.state.tabLaporan === true ? '#68B3C8' : 'transparent'
+                                borderBottomColor: this.state.count === 3 ? '#68B3C8' : 'transparent'
                             }}
                         >
                             <Text
                                 style={{
                                     fontSize: 14,
-                                    color: this.state.tabLaporan === true ? '#68B3C8' : '#717883'
+                                    color: this.state.count === 3 ? '#68B3C8' : '#717883'
                                 }}
                             >
                                 Laporan
@@ -568,7 +557,7 @@ class DetailPosisi extends React.Component {
                     <View style={{
                         height: '100%',
                         backgroundColor: 'white',
-                        flex:1
+                        flex: 1
                     }}>
                         <ScrollView>
                             {this.renderContent()}

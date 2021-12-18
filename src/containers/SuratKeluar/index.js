@@ -124,6 +124,7 @@ class SuratKeluar extends React.Component {
                 borderBottomColor: '#E7EAEF',
                 flexDirection: 'row',
                 backgroundColor: 'white',
+                justifyContent: 'space-around',
               }}>
               <TouchableOpacity onPress={() =>
                 this.props.navigation.navigate('DetailSuratKeluar', {
@@ -215,6 +216,7 @@ class SuratKeluar extends React.Component {
                 borderBottomColor: '#E7EAEF',
                 flexDirection: 'row',
                 backgroundColor: 'white',
+                justifyContent: 'space-around',
               }}>
               <TouchableOpacity onPress={() =>
                 this.props.navigation.navigate('DetailSuratKeluar', {

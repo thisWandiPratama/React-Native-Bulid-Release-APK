@@ -127,6 +127,7 @@ class Disposisi extends React.Component {
             borderBottomWidth: 2,
             borderBottomColor: '#E7EAEF',
             flexDirection: 'row',
+            justifyContent: 'space-around'
           }}>
           <TouchableOpacity onPress={() =>
             this.props.navigation.navigate('DetailDisposisi', {
@@ -179,7 +180,7 @@ class Disposisi extends React.Component {
             <Text
               style={{
                 paddingBottom: 10,
-                alignItems:'flex-end'
+                alignItems: 'flex-end'
               }}>
               {value.date}
             </Text>
@@ -218,6 +219,7 @@ class Disposisi extends React.Component {
               borderBottomColor: '#E7EAEF',
               flexDirection: 'row',
               backgroundColor: value.tagMenteri ? '#80C8EE' : 'transparent',
+              justifyContent:'space-around'
             }}>
             <TouchableOpacity
               onPress={() =>
@@ -273,13 +275,13 @@ class Disposisi extends React.Component {
               <Text
                 style={{
                   paddingBottom: 10,
-                  alignItems:'flex-end'
+                  alignItems: 'flex-end'
                 }}>
                 {value.date}
               </Text>
               {value.tagTandai === true ? (
                 <TouchableOpacity onPress={() => {
-                  let checkIndex = index==3 ? 4 : index
+                  let checkIndex = index == 3 ? 4 : index
                   this.setTagTandai(checkIndex)
                 }}>
                   <Image
@@ -315,6 +317,7 @@ class Disposisi extends React.Component {
               borderBottomColor: '#E7EAEF',
               flexDirection: 'row',
               backgroundColor: value.tagMenteri ? '#80C8EE' : 'transparent',
+              justifyContent:'space-around'
             }}>
             <TouchableOpacity
               onPress={() =>
@@ -370,7 +373,7 @@ class Disposisi extends React.Component {
               <Text
                 style={{
                   paddingBottom: 10,
-                  alignItems:'flex-end'
+                  alignItems: 'flex-end'
                 }}>
                 {value.date}
               </Text>
@@ -409,6 +412,7 @@ class Disposisi extends React.Component {
               borderBottomColor: '#E7EAEF',
               flexDirection: 'row',
               backgroundColor: value.tagMenteri ? '#80C8EE' : 'transparent',
+              justifyContent:'space-around'
             }}>
             <TouchableOpacity
               onPress={() =>
@@ -464,7 +468,7 @@ class Disposisi extends React.Component {
               <Text
                 style={{
                   paddingBottom: 10,
-                  alignItems:'flex-end'
+                  alignItems: 'flex-end'
                 }}>
                 {value.date}
               </Text>

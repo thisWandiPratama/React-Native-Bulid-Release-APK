@@ -129,6 +129,7 @@ class SuratMasuk extends React.Component {
             borderBottomWidth: 2,
             borderBottomColor: '#E7EAEF',
             flexDirection: 'row',
+            justifyContent:'space-around'
           }}>
           <TouchableOpacity onPress={() =>
             this.props.navigation.navigate('DetailSuratMasuk', {
@@ -220,6 +221,7 @@ class SuratMasuk extends React.Component {
               borderBottomColor: '#E7EAEF',
               flexDirection: 'row',
               backgroundColor: value.tagMenteri ? '#80C8EE' : 'transparent',
+              justifyContent:'space-around'
             }}>
             <TouchableOpacity onPress={() =>
               this.props.navigation.navigate('DetailSuratMasuk', {
@@ -320,6 +322,7 @@ class SuratMasuk extends React.Component {
               borderBottomColor: '#E7EAEF',
               flexDirection: 'row',
               backgroundColor: value.tagMenteri ? '#80C8EE' : 'transparent',
+              justifyContent:'space-around'
             }}>
             <TouchableOpacity onPress={() =>
               this.props.navigation.navigate('DetailSuratMasuk', {
@@ -413,6 +416,7 @@ class SuratMasuk extends React.Component {
               borderBottomColor: '#E7EAEF',
               flexDirection: 'row',
               backgroundColor: value.tagMenteri ? '#80C8EE' : 'transparent',
+              justifyContent:'space-around'
             }}>
             <TouchableOpacity onPress={() =>
               this.props.navigation.navigate('DetailSuratMasuk', {

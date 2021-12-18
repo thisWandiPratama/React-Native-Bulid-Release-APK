@@ -173,6 +173,7 @@ class DraftSuratKeluar extends React.Component {
                   borderBottomWidth: 2,
                   borderBottomColor: '#E7EAEF',
                   flexDirection: 'row',
+                  width: '75%',
                 }}
               >
                 <View
@@ -210,17 +211,21 @@ class DraftSuratKeluar extends React.Component {
               </TouchableOpacity>
               <View
                 style={{
-                  alignItems: 'center',
                   justifyContent: 'center',
+                  width: '25%',
                 }}>
                 <Text
                   style={{
                     paddingBottom: 10,
+                    textAlign: 'right',
+                    paddingRight: 2
                   }}>
                   {value.date}
                 </Text>
                 {value.tagTandaTangan === true ? (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                  <TouchableOpacity style={{
+                    alignItems: 'center'
+                  }} onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{
                         uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
@@ -229,7 +234,9 @@ class DraftSuratKeluar extends React.Component {
                     />
                   </TouchableOpacity>
                 ) : (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                  <TouchableOpacity style={{
+                    alignItems: 'center'
+                  }} onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
                       style={{ height: 25, width: 25 }}
@@ -271,6 +278,7 @@ class DraftSuratKeluar extends React.Component {
                   borderBottomWidth: 2,
                   borderBottomColor: '#E7EAEF',
                   flexDirection: 'row',
+                  width: '75%',
                 }}
               >
                 <View
@@ -308,17 +316,21 @@ class DraftSuratKeluar extends React.Component {
               </TouchableOpacity>
               <View
                 style={{
-                  alignItems: 'center',
                   justifyContent: 'center',
+                  width: '25%',
                 }}>
                 <Text
                   style={{
                     paddingBottom: 10,
+                    textAlign: 'right',
+                    paddingRight: 2
                   }}>
                   {value.date}
                 </Text>
                 {value.tagTandaTangan === true ? (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                  <TouchableOpacity style={{
+                    alignItems: 'center',
+                  }} onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{
                         uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
@@ -327,7 +339,9 @@ class DraftSuratKeluar extends React.Component {
                     />
                   </TouchableOpacity>
                 ) : (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                  <TouchableOpacity style={{
+                    alignItems: 'center',
+                  }} onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
                       style={{ height: 25, width: 25 }}
@@ -369,6 +383,7 @@ class DraftSuratKeluar extends React.Component {
                   borderBottomWidth: 2,
                   borderBottomColor: '#E7EAEF',
                   flexDirection: 'row',
+                  width: '75%'
                 }}
               >
                 <View
@@ -406,17 +421,23 @@ class DraftSuratKeluar extends React.Component {
               </TouchableOpacity>
               <View
                 style={{
-                  alignItems: 'center',
                   justifyContent: 'center',
+                  width: '25%'
                 }}>
                 <Text
                   style={{
                     paddingBottom: 10,
+                    textAlign: 'right',
+                    paddingRight: 2
                   }}>
                   {value.date}
                 </Text>
                 {value.tagTandaTangan === true ? (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                  <TouchableOpacity
+                    style={{
+                      alignItems: 'center'
+                    }}
+                    onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{
                         uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
@@ -425,7 +446,11 @@ class DraftSuratKeluar extends React.Component {
                     />
                   </TouchableOpacity>
                 ) : (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                  <TouchableOpacity
+                    style={{
+                      alignItems: 'center'
+                    }}
+                    onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
                       style={{ height: 25, width: 25 }}
@@ -467,6 +492,7 @@ class DraftSuratKeluar extends React.Component {
                   borderBottomWidth: 2,
                   borderBottomColor: '#E7EAEF',
                   flexDirection: 'row',
+                  width: '75%'
                 }}
               >
                 <View
@@ -474,7 +500,7 @@ class DraftSuratKeluar extends React.Component {
                     width: 60,
                     height: 85,
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    justifyContent: 'space-around'
                   }}>
                   <Text style={{ fontSize: 18, color: '#000', fontWeight: 'bold' }}>
                     {value.id}
@@ -504,28 +530,34 @@ class DraftSuratKeluar extends React.Component {
               </TouchableOpacity>
               <View
                 style={{
-                  alignItems: 'center',
                   justifyContent: 'center',
+                  width: '25%'
                 }}>
                 <Text
                   style={{
                     paddingBottom: 10,
+                    textAlign: 'right',
+                    paddingRight: 2
                   }}>
                   {value.date}
                 </Text>
                 {value.tagTandai === true ? (
-                  <TouchableOpacity onPress={() => {
-                    console.log(index)
-                    let result
-                    if (index == 1) {
-                      result = 1
-                    } else if (index == 4) {
-                      result = 4
-                    } else {
-                      result = 5
-                    }
-                    this.setTagTandai(result)
-                  }}>
+                  <TouchableOpacity
+                    style={{
+                      alignItems: 'center'
+                    }}
+                    onPress={() => {
+                      console.log(index)
+                      let result
+                      if (index == 1) {
+                        result = 1
+                      } else if (index == 4) {
+                        result = 4
+                      } else {
+                        result = 5
+                      }
+                      this.setTagTandai(result)
+                    }}>
                     <Image
                       source={{
                         uri: 'https://i.ibb.co/cQwJxpx/office-push-pin.png',
@@ -534,7 +566,11 @@ class DraftSuratKeluar extends React.Component {
                     />
                   </TouchableOpacity>
                 ) : (
-                  <TouchableOpacity onPress={() => this.setTagTandai(index)}>
+                  <TouchableOpacity
+                    style={{
+                      alignItems: 'center'
+                    }}
+                    onPress={() => this.setTagTandai(index)}>
                     <Image
                       source={{ uri: 'https://i.ibb.co/1bcvkCQ/pin.png' }}
                       style={{ height: 25, width: 25 }}

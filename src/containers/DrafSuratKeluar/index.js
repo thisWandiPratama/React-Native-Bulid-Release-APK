@@ -135,10 +135,13 @@ class DraftSuratKeluar extends React.Component {
     let elementIndex = this.state.content.findIndex((element, index) => index == indexParam)
     let newContent = [...this.state.content]
     newContent[elementIndex] = { ...newContent[elementIndex], tagTandai: !newContent[elementIndex].tagTandai }
-    console.log(newContent)
+    console.log(newContent[elementIndex])
     this.setState({ content: newContent })
   }
 
+  componentDidUpdate(){
+    this.renderContent()
+  }
 
   renderContent = () => {
     return this.state.content.map((value, index) => {
@@ -222,7 +225,7 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandaTangan === true ? (
+                {value.tagTandai === true ? (
                   <TouchableOpacity style={{
                     alignItems: 'center'
                   }} onPress={() => this.setTagTandai(index)}>
@@ -327,7 +330,7 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandaTangan === true ? (
+                {value.tagTandai === true ? (
                   <TouchableOpacity style={{
                     alignItems: 'center',
                   }} onPress={() => this.setTagTandai(index)}>
@@ -432,7 +435,7 @@ class DraftSuratKeluar extends React.Component {
                   }}>
                   {value.date}
                 </Text>
-                {value.tagTandaTangan === true ? (
+                {value.tagTandai === true ? (
                   <TouchableOpacity
                     style={{
                       alignItems: 'center'
